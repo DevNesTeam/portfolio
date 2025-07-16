@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تفاصيل التطبيق - سمارت بلس</title>
+  <title>Smart Plus - تفاصيل التطبيق</title>
+  <meta name="description" content="نظرة عامة مفصلة على تطبيق Smart Plus، ميزاته، تاريخ إطلاقه، ومنصاته المتاحة." />
+  <meta name="keywords" content="Smart Plus, تطبيق Smart Plus, تطبيقات الأندرويد, تطبيقات iOS, تطبيقات الويب, فريق Freelance Online" />
 
-  <!-- Bootstrap RTL -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
 
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
-  <!-- Swiper CSS -->
   <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet" />
 
   <style>
-    /* الجسم يستخدم كامل الشاشة ب flex column */
+    /* Global Styles */
     body {
       font-family: 'Tajawal', sans-serif;
       background-color: #f8f9fa;
@@ -28,11 +26,8 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      /* اجعل المحتوى يملأ المساحة بين الهيدر والفوتر */
-      min-height: 100vh;
     }
 
-    /* المحتوى الرئيسي (التفاصيل والمعرض) ياخذ مساحة مرنة */
     main {
       flex: 1 0 auto;
       display: flex;
@@ -41,39 +36,37 @@
       width: 100%;
     }
 
-    /* عناوين الأقسام */
+    /* Section Titles */
     .section-title h2 {
       font-weight: bold;
+      color: #343a40; /* Darker color for titles */
     }
 
     .section-title p {
       color: #6c757d;
     }
 
-    /* الصور في السويبر */
-    .swiper-slide img {
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .swiper-slide img:hover {
-      transform: scale(1.05);
-    }
-
+    /* Buttons */
     .btn {
       border-radius: 30px;
+      padding: 10px 25px; /* Adjust padding for better look */
+      font-weight: 500;
+    }
+
+    /* Card Styling */
+    .card {
+      border-radius: 15px; /* Slightly more rounded cards */
+      overflow: hidden; /* Ensures content stays within rounded corners */
     }
 
     .card-title {
       font-weight: bold;
+      color: #007bff; /* Primary color for card titles */
     }
 
-    /* تنسيق الفوتر */
+    /* Footer Styling */
     footer.footer {
-      background-color: #212529;
+      background-color: #212529; /* Dark background for footer */
       color: #fff;
       padding: 30px 15px;
       flex-shrink: 0;
@@ -84,6 +77,7 @@
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 10px;
+      color: #fff; /* Ensure sitename is white */
     }
 
     footer.footer p {
@@ -105,7 +99,7 @@
     }
 
     .social-links a:hover {
-      color: #0d6efd;
+      color: #0d6efd; /* Bootstrap primary blue on hover */
       text-decoration: none;
     }
 
@@ -117,12 +111,73 @@
     }
 
     .credits a {
-      color: #0d6efd;
+      color: #0d6efd; /* Bootstrap primary blue for links */
       text-decoration: none;
     }
 
     .credits a:hover {
       text-decoration: underline;
+    }
+
+    /* Gallery Section Styling */
+    .gallery {
+      overflow: hidden;
+      padding: 40px 0; /* Add some vertical padding */
+    }
+
+    .gallery .swiper-wrapper {
+      height: auto;
+    }
+
+    .gallery .swiper-slide img {
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .gallery .swiper-slide img:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery .swiper-pagination {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .gallery .swiper-pagination .swiper-pagination-bullet {
+      background-color: var(--background-color, #dee2e6); /* Light gray for inactive bullets */
+      border: 1px solid var(--accent-color, #0d6efd);
+      width: 12px;
+      height: 12px;
+      opacity: 1;
+    }
+
+    .gallery .swiper-pagination .swiper-pagination-bullet-active {
+      background-color: var(--accent-color, #0d6efd); /* Primary blue for active bullets */
+    }
+
+    .gallery .swiper-slide-active {
+      text-align: center;
+    }
+
+    /* Responsive adjustments for Gallery */
+    @media (min-width: 992px) {
+      .gallery .swiper-wrapper {
+        padding: 60px 0;
+      }
+
+      .gallery .swiper-slide-active {
+        background: var(--background-color, #fff);
+        border: 6px solid var(--accent-color, #0d6efd);
+        padding: 4px;
+        z-index: 1;
+        transform: scale(1.1);
+        border-radius: 25px;
+        transition: none;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Add subtle shadow */
+      }
     }
   </style>
 </head>
@@ -130,34 +185,33 @@
 <body>
 
   <main>
-    <!-- ========================= -->
-    <!--     تفاصيل التطبيق       -->
-    <!-- ========================= -->
     <section id="app-details" class="py-5 bg-white">
       <div class="container">
         <div class="section-title text-center mb-5">
           <h2>تفاصيل التطبيق</h2>
-          <p class="text-muted">معلومات موجزة حول التطبيق، من هو المطور، وأين يمكنك تجربته.</p>
+          <p class="text-muted">نظرة عامة موجزة عن التطبيق والمطور وروابط التجربة</p>
         </div>
 
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="card shadow-sm border-0">
-              <div class="card-body">
-                <h5 class="card-title mb-3">📱 اسم التطبيق</h5>
-                <p class="card-text">تطبيق <strong>سمارت بلس</strong> يسهّل إدارة المهام اليومية ويجمع أدوات الإنتاجية في منصة واحدة سهلة الاستخدام وذكية.</p>
+              <div class="card-body p-4 p-md-5">
+                <h5 class="card-title mb-3 text-center">📱 اسم التطبيق: Smart Plus</h5>
+                <p class="card-text text-center lead mb-4">
+                  يساعدك <strong>Smart Plus</strong> على تبسيط مهامك اليومية من خلال دمج أدوات الإنتاجية في منصة ذكية وسهلة الاستخدام.
+                </p>
 
-                <ul class="list-unstyled mt-4">
-                  <li><strong>📅 تاريخ الإطلاق:</strong> يوليو 2025</li>
-                  <li><strong>💻 المنصات:</strong> Android, iOS, Web</li>
-                  <li><strong>🛠️ الحالة:</strong> إصدار تجريبي (Beta)</li>
-                  <li><strong>👨‍💻 المطور:</strong> فريق فريلانس أونلاين</li>
+                <ul class="list-unstyled mt-4 text-center">
+                  <li class="mb-2"><strong>📅 تاريخ الإطلاق:</strong> يوليو 2025</li>
+                  <li class="mb-2"><strong>💻 المنصات:</strong> أندرويد، iOS، الويب</li>
+                  <li class="mb-2"><strong>🛠️ الحالة:</strong> إصدار تجريبي</li>
+                  <li class="mb-2"><strong>👨‍💻 المطور:</strong> فريق Freelance Online</li>
                 </ul>
 
-                <div class="mt-4 d-flex flex-wrap gap-3 justify-content-center">
-                  <a href="#" class="btn btn-primary"><i class="bi bi-download"></i> تحميل التطبيق</a>
-                  <a href="#" class="btn btn-outline-secondary"><i class="bi bi-github"></i> الشيفرة المصدرية</a>
-                  <a href="#" class="btn btn-outline-success"><i class="bi bi-globe"></i> زيارة الموقع</a>
+                <div class="mt-5 d-flex flex-wrap gap-3 justify-content-center">
+                  <a href="#" class="btn btn-primary" aria-label="تحميل التطبيق"><i class="bi bi-download me-2"></i> تحميل التطبيق</a>
+                  <a href="#" class="btn btn-outline-secondary" aria-label="الكود المصدري على GitHub"><i class="bi bi-github me-2"></i> الكود المصدري</a>
+                  <a href="#" class="btn btn-outline-success" aria-label="زيارة موقع التطبيق"><i class="bi bi-globe me-2"></i> زيارة الموقع</a>
                 </div>
 
               </div>
@@ -167,22 +221,19 @@
       </div>
     </section>
 
-    <!-- ========================= -->
-    <!--       معرض الصور         -->
-    <!-- ========================= -->
-    <section id="gallery" class="py-5 bg-light">
-      <div class="container section-title text-center mb-4">
-        <h2>معرض التطبيق</h2>
-        <p>لقطات من شاشة تطبيق "سمارت بلس" توضح تصميمه العملي وتجربته الذكية.</p>
-      </div>
-
-      <div class="container-fluid px-3">
+    <section id="gallery" class="gallery section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>معرض الصور</h2>
+        <p>استعرض لقطات شاشة من تطبيقنا لتتعرف على واجهته وميزاته.</p>
+      </div><div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
         <div class="swiper init-swiper">
           <script type="application/json" class="swiper-config">
             {
               "loop": true,
               "speed": 600,
-              "autoplay": { "delay": 5000 },
+              "autoplay": {
+                "delay": 1500
+              },
               "slidesPerView": "auto",
               "centeredSlides": true,
               "pagination": {
@@ -191,71 +242,91 @@
                 "clickable": true
               },
               "breakpoints": {
-                "320": { "slidesPerView": 1, "spaceBetween": 10 },
-                "768": { "slidesPerView": 3, "spaceBetween": 20 },
-                "992": { "slidesPerView": 5, "spaceBetween": 30 },
-                "1200": { "slidesPerView": 7, "spaceBetween": 30 }
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 0
+                },
+                "768": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 30
+                },
+                "992": {
+                  "slidesPerView": 5,
+                  "spaceBetween": 30
+                },
+                "1200": {
+                  "slidesPerView": 7,
+                  "spaceBetween": 30
+                }
               }
             }
           </script>
-
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide" style="width: 200px;">
-              <a href="assets/img/app-gallery/app-gallery-1.png" class="glightbox">
-                <img src="assets/img/app-gallery/app-gallery-1.png" class="img-fluid" alt="صورة 1" />
-              </a>
-            </div>
-            <div class="swiper-slide" style="width: 200px;">
-              <a href="assets/img/app-gallery/app-gallery-2.png" class="glightbox">
-                <img src="assets/img/app-gallery/app-gallery-2.png" class="img-fluid" alt="صورة 2" />
-              </a>
-            </div>
-            <div class="swiper-slide" style="width: 200px;">
-              <a href="assets/img/app-gallery/app-gallery-3.png" class="glightbox">
-                <img src="assets/img/app-gallery/app-gallery-3.png" class="img-fluid" alt="صورة 3" />
-              </a>
-            </div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-1.png"><img src="assets/img/app-gallery/app-gallery-1.png" class="img-fluid" alt="لقطة شاشة للتطبيق 1"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-2.png"><img src="assets/img/app-gallery/app-gallery-2.png" class="img-fluid" alt="لقطة شاشة للتطبيق 2"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-3.png"><img src="assets/img/app-gallery/app-gallery-3.png" class="img-fluid" alt="لقطة شاشة للتطبيق 3"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-4.png"><img src="assets/img/app-gallery/app-gallery-4.png" class="img-fluid" alt="لقطة شاشة للتطبيق 4"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-5.png"><img src="assets/img/app-gallery/app-gallery-5.png" class="img-fluid" alt="لقطة شاشة للتطبيق 5"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-6.png"><img src="assets/img/app-gallery/app-gallery-6.png" class="img-fluid" alt="لقطة شاشة للتطبيق 6"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-7.png"><img src="assets/img/app-gallery/app-gallery-7.png" class="img-fluid" alt="لقطة شاشة للتطبيق 7"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-8.png"><img src="assets/img/app-gallery/app-gallery-8.png" class="img-fluid" alt="لقطة شاشة للتطبيق 8"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-9.png"><img src="assets/img/app-gallery/app-gallery-9.png" class="img-fluid" alt="لقطة شاشة للتطبيق 9"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-10.png"><img src="assets/img/app-gallery/app-gallery-10.png" class="img-fluid" alt="لقطة شاشة للتطبيق 10"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-11.png"><img src="assets/img/app-gallery/app-gallery-11.png" class="img-fluid" alt="لقطة شاشة للتطبيق 11"></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full" href="assets/img/app-gallery/app-gallery-12.png"><img src="assets/img/app-gallery/app-gallery-12.png" class="img-fluid" alt="لقطة شاشة للتطبيق 12"></a></div>
           </div>
-          <div class="swiper-pagination mt-3"></div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
-    </section>
-  </main>
+    </section></main>
 
-  <!-- ========================= -->
-  <!--          الفوتر          -->
-  <!-- ========================= -->
   <footer id="footer" class="footer">
     <div class="container">
       <h3 class="sitename">DevNest Team</h3>
-      <p>We provide reliable solutions to help you achieve your goals efficiently and effortlessly.</p>
+      <p>نحن نقدم حلولاً موثوقة لمساعدتك على تحقيق أهدافك بكفاءة وسهولة.</p>
       <div class="social-links d-flex justify-content-center">
-        <a href="https://x.com/Devnest_Team?t=xLOYzyeMeId-iJmlXjy0JQ&s=09" target="_blank" rel="noopener"><i class="bi bi-twitter"></i></a>
-        <a href="https://www.facebook.com/share/1BrLLprqzS/" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/devnestteam?igsh=aHpmcm43MnJ5NmZ5" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
-        <a href="#" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+        <a href="https://x.com/Devnest_Team?t=xLOYzyeMeId-iJmlXjy0JQ&s=09" target="_blank" aria-label="تابعنا على Twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/share/1BrLLprqzS/" target="_blank" aria-label="تابعنا على Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/devnestteam?igsh=aHpmcm43MnJ5NmZ5" target="_blank" aria-label="تابعنا على Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" target="_blank" aria-label="تابعنا على LinkedIn"><i class="bi bi-linkedin"></i></a>
       </div>
       <div class="copyright">
-        <span>© Copyright</span> <strong class="px-1 sitename">DevNest Team</strong> <span>All Rights Reserved</span>
+        <span>© جميع الحقوق محفوظة</span> <strong class="px-1 sitename">DevNest Team</strong>
       </div>
       <div class="credits">
-        Designed by <a href="https://www.facebook.com/share/16umHbp1qt/" target="_blank" rel="noopener">Mohammed Almostfa</a>
+        تصميم بواسطة <a href="https://www.facebook.com/share/16umHbp1qt/" target="_blank">Mohammed Almostfa</a>
       </div>
     </div>
-  </footer>
-
-  <!-- ========================= -->
-  <!--       المكاتب JS         -->
-  <!-- ========================= -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
 
   <script>
-    const swiperConfig = document.querySelector('.swiper-config').textContent;
-    const config = JSON.parse(swiperConfig);
+    // Initialize Swiper (Ensure this is loaded after Swiper library)
+    document.addEventListener('DOMContentLoaded', () => {
+      const swiperConfigElement = document.querySelector('.swiper-config');
+      if (swiperConfigElement) {
+        try {
+          const swiperConfig = swiperConfigElement.textContent;
+          const config = JSON.parse(swiperConfig);
+          new Swiper('.swiper', { ...config });
+        } catch (error) {
+          console.error('Error parsing Swiper configuration:', error);
+        }
+      }
 
-    new Swiper('.swiper', {
-      ...config,
+      // Initialize GLightbox (Ensure this is loaded after GLightbox library)
+      const lightbox = GLightbox({
+        selector: '.glightbox', // Selector for elements to open in lightbox
+        skin: 'zoom', // Lightbox animation skin
+        openEffect: 'zoom', // Effect when opening
+        closeEffect: 'zoom', // Effect when closing
+        cssEfects: { // Custom CSS effects if needed
+          fade: 'fade',
+          zoom: 'zoom'
+        }
+      });
     });
   </script>
 
