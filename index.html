@@ -268,228 +268,186 @@
 
   
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery section">
+    
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Gallery</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+<section id="gallery" class="gallery section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Our Applications</h2>
+    <p>Swipe through our apps and explore what we’ve created to solve real problems with elegant solutions.</p>
+  </div><!-- End Section Title -->
 
-      <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "centeredSlides": true,
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 0
-                },
-                "768": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 30
-                },
-                "992": {
-                  "slidesPerView": 5,
-                  "spaceBetween": 30
-                },
-                "1200": {
-                  "slidesPerView": 7,
-                  "spaceBetween": 30
-                }
-              }
+  <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+    <div class="swiper init-swiper">
+      
+      <!-- Swiper Configuration -->
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "centeredSlides": true,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          },
+          "breakpoints": {
+            "320": {
+              "slidesPerView": 1,
+              "spaceBetween": 10
+            },
+            "768": {
+              "slidesPerView": 2,
+              "spaceBetween": 20
+            },
+            "992": {
+              "slidesPerView": 3,
+              "spaceBetween": 30
+            },
+            "1200": {
+              "slidesPerView": 4,
+              "spaceBetween": 30
             }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-1.png"><img src="assets/img/app-gallery/app-gallery-1.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-2.png"><img src="assets/img/app-gallery/app-gallery-2.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-3.png"><img src="assets/img/app-gallery/app-gallery-3.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-4.png"><img src="assets/img/app-gallery/app-gallery-4.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-5.png"><img src="assets/img/app-gallery/app-gallery-5.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-6.png"><img src="assets/img/app-gallery/app-gallery-6.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-7.png"><img src="assets/img/app-gallery/app-gallery-7.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-8.png"><img src="assets/img/app-gallery/app-gallery-8.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-9.png"><img src="assets/img/app-gallery/app-gallery-9.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-10.png"><img src="assets/img/app-gallery/app-gallery-10.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-11.png"><img src="assets/img/app-gallery/app-gallery-11.png"
-                  class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery-full"
-                href="assets/img/app-gallery/app-gallery-12.png"><img src="assets/img/app-gallery/app-gallery-12.png"
-                  class="img-fluid" alt=""></a></div>
+          }
+        }
+      </script>
+
+      <div class="swiper-wrapper align-items-stretch">
+
+        <!-- App Card 1 -->
+        <div class="swiper-slide">
+          <div class="card text-center shadow p-4 h-100">
+            <img src="assets/img/app1/icon.jpg" class="img-fluid mx-auto mb-3" style="width: 80px;" alt="App 1 Icon">
+            <h5 class="mb-2">OBG</h5>
+            <p class="text-muted small">Short description about the app functionality.</p>
+            <a href="app-details/app1.html" class="btn btn-outline-primary btn-sm mt-2">View Details</a>
           </div>
-          <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- App Card 2 -->
+        <div class="swiper-slide">
+          <div class="card text-center shadow p-4 h-100">
+            <img src="assets/img/app2/icon.jpg" class="img-fluid mx-auto mb-3" style="width: 80px;" alt="App 2 Icon">
+            <h5 class="mb-2">Lista</h5>
+            <p class="text-muted small">Another awesome app that solves a real problem.</p>
+            <a href="app-details/app2.html" class="btn btn-outline-primary btn-sm mt-2">View Details</a>
+          </div>
+        </div>
+
+   
+
+      </div><!-- End swiper-wrapper -->
+
+      <!-- Swiper Pagination -->
+      <div class="swiper-pagination mt-4"></div>
+
+    </div><!-- End swiper -->
+  </div><!-- End container-fluid -->
+
+
+  
+</section>
+
+
+
+
+<!-- Team Section -->
+<section id="team" class="testimonials section bg-light py-5">
+  <div class="container section-title text-center" data-aos="fade-up">
+    <h2>Team Members</h2>
+    <p>We are a passionate team of developers and designers turning ideas into innovative, high-impact applications.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="swiper init-swiper">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          }
+        }
+      </script>
+
+      <div class="swiper-wrapper">
+
+        <!-- Mohammed Almostfa -->
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <img src="assets/img/team/Mohammed.jpeg" class="testimonial-img" alt="Mohammed">
+            <h3>Mohammed Almostfa</h3>
+            <h4>Backend Developer</h4>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              An experienced backend engineer focused on building smart, scalable, and secure systems for modern apps.
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div>
+
+        <!-- Sohiab Kamel -->
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <img src="assets/img/team/sohaib.jpg" class="testimonial-img" alt="Sohiab">
+            <h3>Sohiab Kamel</h3>
+            <h4>Flutter Developer</h4>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              Specializes in building cross-platform mobile apps with a strong focus on performance and user experience.
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div>
+
+        <!-- Moayyad Nagib -->
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <img src="assets/img/team/moayyad.jpeg" class="testimonial-img" alt="Moayyad">
+            <h3>Moayyad Nagib</h3>
+            <h4>Flutter Developer</h4>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              Expert in responsive UI and efficient mobile architecture, delivering seamless experiences across devices.
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div>
+
+        <!-- Azzddine Miche -->
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <img src="assets/img/team/azzeddine.jpeg" class="testimonial-img" alt="Azzddine">
+            <h3>Azzddine Miche</h3>
+            <h4>UI/UX Designer</h4>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              Creative designer crafting beautiful and intuitive interfaces that elevate the user journey.
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
         </div>
 
       </div>
 
-    </section><!-- /Gallery Section -->
+      <div class="swiper-pagination mt-3"></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
-                    Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram
-                    malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis
-                    minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim
-                    velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum
-                    veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
-                    culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum
-                    quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
 
     <!-- Pricing Section -->
-    <
+    
 
   <!-- Faq Section -->
 <section id="faq" class="faq section">
