@@ -9,6 +9,28 @@
 (function() {
   "use strict";
 
+
+ /**
+   * Mobile nav toggle
+   */
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle'); // هذا السطر بيحاول يلاقي الزر
+
+  function mobileNavToogle() {
+    // هذا السطر ببدّل الكلاس "mobile-nav-active" على الـ body لفتح/إغلاق القائمة
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    // وهاد بغير أيقونة الزر بين الهامبرغر و X
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
+  }
+
+  // هذا السطر مهم جداً، بيضيف مستمع حدث (Event Listener) لزر التنقل
+  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+
+  // ... (باقي أكواد القالب) ...
+
+})();
+
+  
   // --- Translation Variables & Functions (moved to top for better scope) ---
   const translations = {};
   let currentLang = '';
