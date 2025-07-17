@@ -1,75 +1,63 @@
-// قم بتحديد مسار ملفات الترجمة
-const translations = {
-  en: 'assets/translations/en.json',
-  ar: 'assets/translations/ar.json'
-};
+document.addEventListener('DOMContentLoaded', () => {
 
-// مسار ملف CSS الخاص باللغة العربية (RTL)
-const rtlCssPath = 'assets/css/main-rtl.css';
+  const translations = {};
+  let currentLang = '';
 
-// دالة تحميل ملف CSS
-function loadCssFile(href) {
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = href;
-  link.id = 'rtl-style'; // أضف ID لسهولة حذفه لاحقاً
-  document.head.appendChild(link);
-}
-
-// دالة إزالة ملف CSS
-function removeCssFile(id) {
-  const link = document.getElementById(id);
-  if (link) {
-    link.remove();
-  }
-}
-
-// دالة تحميل الترجمات وتطبيقها
-async function loadTranslations(lang) {
-  try {
-    const response = await fetch(translations[lang]);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+  // دالة لجلب ملفات الترجمة
+  async function loadTranslations(lang) {
+    try {
+      const response = await fetch(`translations/${lang}.json`);
+      if (!response.ok) { // تأكد من أن الطلب كان ناجحاً (مثلاً 200 OK)
+        throw new Error(`HTTP error! status: ${response.status} for ${lang}.json`);
+      }
+      translations[lang] = await response.json();
+      console.log(`Translations loaded for ${lang}:`, translations[lang]); // للتأكد من التحميل
+    } catch (error) {
+      console.error(`Error loading translations for ${lang}:`, error);
+      // في حال فشل تحميل ملف الترجمة، يمكننا إعادة تعيين للغة الافتراضية
+      if (lang !== 'en' && Object.keys(translations).length === 0) {
+        console.warn('Falling back to English as default due to translation load failure.');
+        setLanguage('en'); // نعود للإنجليزية كافتراضي إذا كانت هذه أول لغة يتم تحميلها وفشلت
+      }
     }
-    const data = await response.json();
-    console.log(`Translations loaded for ${lang}:`, data); // للتأكد من تحميل الترجمات
+  }
 
-    // تطبيق الترجمات على العناصر
+  // دالة لتغيير لغة الموقع
+  window.setLanguage = async (lang) => {
+    localStorage.setItem('language', lang);
+    currentLang = lang;
+
+    if (!translations[lang]) {
+      await loadTranslations(lang);
+    }
+    
+    // تطبيق الترجمات
     document.querySelectorAll('[data-translate-key]').forEach(element => {
       const key = element.getAttribute('data-translate-key');
-      // التحقق مما إذا كان العنصر <input> ولديه placeholder
-      if (element.tagName === 'INPUT' && element.hasAttribute('placeholder') && data[key]) {
-        element.setAttribute('placeholder', data[key]);
-      } else if (data[key]) {
-        element.textContent = data[key];
+      // تأكد أن ملف الترجمة للغة الحالية قد تم تحميله وأن المفتاح موجود فيه
+      if (translations[lang] && translations[lang][key]) {
+        element.textContent = translations[lang][key];
+      } else {
+        // يمكن هنا ترك المحتوى الأصلي أو إظهار رسالة خطأ للمفتاح غير الموجود
+        console.warn(`Missing translation for key "${key}" in ${lang}.json`);
       }
     });
 
-    // تحديث السمة 'dir' لجسم الصفحة أو عنصر html
-    const htmlElement = document.documentElement; // استهداف عنصر <html>
+    // التعامل مع اتجاه النص (من اليمين لليسار RTL)
     if (lang === 'ar') {
-      htmlElement.setAttribute('dir', 'rtl');
-      loadCssFile(rtlCssPath); // تحميل ملف CSS الخاص بـ RTL
+      document.documentElement.setAttribute('dir', 'rtl');
     } else {
-      htmlElement.setAttribute('dir', 'ltr');
-      removeCssFile('rtl-style'); // إزالة ملف CSS الخاص بـ RTL
+      document.documentElement.setAttribute('dir', 'ltr');
     }
+    document.documentElement.setAttribute('lang', lang); // إضافة خاصية lang للـ HTML
+  };
 
-    // حفظ اللغة المختارة في Local Storage
-    localStorage.setItem('selectedLanguage', lang);
-
-  } catch (error) {
-    console.error('Error loading translations:', error);
+  // دالة للتحقق من اللغة عند تحميل الصفحة وتعيين الافتراضي
+  async function initializeLanguage() {
+    const savedLang = localStorage.getItem('language');
+    const langToUse = savedLang || 'en'; // الإنجليزية هي الافتراضية إذا لم يتم حفظ لغة
+    await setLanguage(langToUse);
   }
-}
 
-// دالة تبديل اللغة (تستخدم عند النقر على زر اللغة)
-function setLanguage(lang) {
-  loadTranslations(lang);
-}
-
-// تحميل اللغة عند تحميل الصفحة (من Local Storage أو الإنجليزية كافتراضي)
-document.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-  setLanguage(savedLang); // استدعاء setLanguage بدلاً من loadTranslations مباشرةً
+  initializeLanguage();
 });
