@@ -63,3 +63,26 @@ ul.ps-3 li {
     font-size: 2rem;
   }
 }
+
+/* Swiper Slides */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.swiper-slide img {
+  max-width: 80%;            /* ⬅️ أصغر من قبل */
+  height: auto;
+  border-radius: 20px;       /* ⬅️ حواف ناعمة أكثر */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.swiper-slide img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
