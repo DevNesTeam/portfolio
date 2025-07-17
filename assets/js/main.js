@@ -43,6 +43,7 @@
         mobileNavToogle();
       }
     });
+
   });
 
   /**
@@ -123,24 +124,9 @@
   /**
    * Initiate glightbox
    */
-  let glightboxInstance = null;
-  function initGlightbox() {
-    if (glightboxInstance) {
-      glightboxInstance.destroy();
-    }
-    glightboxInstance = GLightbox({
-      selector: '.glightbox',
-      skin: 'zoom',
-      openEffect: 'zoom',
-      closeEffect: 'zoom',
-      cssEfects: {
-        fade: 'fade',
-        zoom: 'zoom'
-      }
-    });
-  }
-
-  window.addEventListener('load', initGlightbox);
+  const glightbox = GLightbox({
+    selector: '.glightbox'
+  });
 
   /**
    * Frequently Asked Questions Toggle
@@ -186,84 +172,9 @@
       } else {
         navmenulink.classList.remove('active');
       }
-    });
+    })
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
-
-  /**
-   * Dynamic content loading logic
-   */
-  const contentDiv = document.querySelector("#content");
-
-  // Handler function for dynamic loading links
-  function handleDynamicLoad(e) {
-    e.preventDefault();
-    const targetPage = this.getAttribute("data-load");
-
-    fetch(targetPage)
-      .then(res => res.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-        const newMain = doc.querySelector("main");
-        contentDiv.innerHTML = newMain ? newMain.innerHTML : "<p>تعذر تحميل المحتوى</p>";
-
-        // بعد تحميل المحتوى الجديد، أعد تهيئة المكونات والروابط
-        reinitializePlugins();
-      })
-      .catch(err => {
-        contentDiv.innerHTML = "<p>تعذر تحميل الصفحة المطلوبة.</p>";
-        console.error("Error loading content:", err);
-      });
-  }
-
-  // Attach event listeners to links with data-load
-  function attachDynamicLoadListeners() {
-    document.querySelectorAll("[data-load]").forEach(link => {
-      link.removeEventListener("click", handleDynamicLoad);
-      link.addEventListener("click", handleDynamicLoad);
-    });
-  }
-
-  // إعادة تهيئة المكونات بعد تحميل المحتوى ديناميكيًا
-  function reinitializePlugins() {
-    // إعادة تهيئة Swiper
-    document.querySelectorAll('.swiper').forEach(swiperEl => {
-      const configElement = swiperEl.querySelector(".swiper-config");
-      if (configElement) {
-        try {
-          const config = JSON.parse(configElement.textContent);
-          new Swiper(swiperEl, config);
-        } catch (e) {
-          console.error("Swiper config error:", e);
-        }
-      }
-    });
-
-    // إعادة تهيئة GLightbox
-    initGlightbox();
-
-    // إعادة تعيين الروابط الديناميكية
-    attachDynamicLoadListeners();
-  }
-
-  // تحميل الصفحة الأساسية داخل #content عند بداية تحميل الصفحة
-  window.addEventListener("load", () => {
-    fetch("main.html")
-      .then(response => response.text())
-      .then(html => {
-        contentDiv.innerHTML = html;
-        reinitializePlugins();
-      })
-      .catch(error => {
-        console.error("Error loading main.html:", error);
-      });
-  });
-
-  // ربط الـ event listeners للروابط عند DOMContentLoaded
-  document.addEventListener("DOMContentLoaded", () => {
-    attachDynamicLoadListeners();
-  });
 
 })();

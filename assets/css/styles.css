@@ -1,0 +1,65 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+
+.section-title p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.gallery.section {
+  background: #f9f9f9;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.card-text.lead {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+ul.list-unstyled li {
+  font-size: 1.1rem;
+}
+
+ul.list-unstyled li strong {
+  color: #0d6efd; /* Bootstrap primary color */
+}
+
+ul.ps-3 li {
+  line-height: 1.5;
+}
+
+/* Swiper Slides */
+.swiper-slide img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive paddings */
+@media (max-width: 576px) {
+  .section-title h2 {
+    font-size: 2rem;
+  }
+}
