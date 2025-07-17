@@ -9,6 +9,95 @@
 (function() {
   "use strict";
 
+  // --- Translation Variables & Functions (moved to top for better scope) ---
+  const translations = {};
+  let currentLang = '';
+
+  // المسار الأساسي لملفات الترجمة بالنسبة لملف HTML الرئيسي (index.html)
+  // تأكد أن مجلد 'translations' موجود في نفس مستوى ملف HTML الرئيسي
+  const TRANSLATIONS_BASE_PATH = './translations/';
+
+  async function loadTranslations(lang) {
+    try {
+      const response = await fetch(`${TRANSLATIONS_BASE_PATH}${lang}.json`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status} for ${TRANSLATIONS_BASE_PATH}${lang}.json`);
+      }
+      translations[lang] = await response.json();
+      console.log(`Translations loaded for ${lang}:`, translations[lang]);
+    } catch (error) {
+      console.error(`Error loading translations for ${lang}:`, error);
+      if (lang !== 'en' && Object.keys(translations).length === 0) {
+        console.warn('Falling back to English as default due to translation load failure.');
+        setLanguage('en');
+      }
+    }
+  }
+
+  // دالة لتغيير لغة الموقع (متاحة عالمياً)
+  window.setLanguage = async (lang) => {
+    localStorage.setItem('language', lang);
+    currentLang = lang;
+
+    if (!translations[lang]) {
+      await loadTranslations(lang);
+    }
+
+    // تطبيق الترجمات على جميع العناصر التي تحمل data-translate-key
+    document.querySelectorAll('[data-translate-key]').forEach(element => {
+      const key = element.getAttribute('data-translate-key');
+      if (translations[lang] && translations[lang][key]) {
+        if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+            element.setAttribute('placeholder', translations[lang][key]);
+        } else {
+            element.textContent = translations[lang][key];
+        }
+      } else {
+        console.warn(`Missing translation for key "${key}" in ${lang}.json`);
+      }
+    });
+
+    // التعامل مع اتجاه النص (RTL/LTR) وتحميل/إزالة ملف CSS الخاص بـ RTL
+    if (lang === 'ar') {
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.documentElement.setAttribute('lang', 'ar');
+
+      let rtlLink = document.getElementById('rtl-style');
+      if (!rtlLink) { // إذا لم يكن ملف الـ RTL CSS محملاً، قم بتحميله
+        rtlLink = document.createElement('link');
+        rtlLink.rel = 'stylesheet';
+        // المسار هنا يكون نسبةً لملف HTML الرئيسي (index.html)
+        rtlLink.href = 'assets/css/main-rtl.css';
+        rtlLink.id = 'rtl-style';
+        document.head.appendChild(rtlLink);
+        console.log('RTL stylesheet added.');
+      }
+    } else {
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.documentElement.setAttribute('lang', lang);
+
+      const rtlLink = document.getElementById('rtl-style');
+      if (rtlLink) { // إذا كان ملف الـ RTL CSS محملاً، قم بإزالته
+        rtlLink.remove();
+        console.log('RTL stylesheet removed.');
+      }
+    }
+
+    // تحديث النص المعروض لزر اختيار اللغة في القائمة المنسدلة
+    const currentLangDisplay = document.getElementById('current-language-display');
+    if (currentLangDisplay) {
+        const dropdownKey = currentLangDisplay.getAttribute('data-translate-key');
+        if (dropdownKey && translations[lang] && translations[lang][dropdownKey]) {
+            currentLangDisplay.querySelector('span').textContent = translations[lang][dropdownKey];
+        } else {
+            currentLangDisplay.querySelector('span').textContent = (lang === 'ar' ? 'اللغة' : 'Language');
+        }
+    }
+  };
+
+  // --- End Translation Variables & Functions ---
+
+
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
@@ -100,7 +189,8 @@
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+  // Changed from window.addEventListener('load', aosInit);
+  // aosInit will be called by initializeLanguage() to ensure it runs after language is set.
 
   /**
    * Init swiper sliders
@@ -112,14 +202,18 @@
       );
 
       if (swiperElement.classList.contains("swiper-tab")) {
+        // Assuming initSwiperWithCustomPagination is defined elsewhere or not used if not present
+        // If it's not defined, this line will cause an error.
+        // Make sure it's part of your project or remove this conditional.
+        // For now, I'll keep it as per your original code.
         initSwiperWithCustomPagination(swiperElement, config);
       } else {
         new Swiper(swiperElement, config);
       }
     });
   }
-
-  window.addEventListener("load", initSwiper);
+  // Changed from window.addEventListener("load", initSwiper);
+  // initSwiper will be called by initializeLanguage() to ensure it runs after language is set.
 
   /**
    * Initiate glightbox
@@ -129,13 +223,33 @@
   });
 
   /**
-   * Frequently Asked Questions Toggle
+   * Frequently Asked Questions Toggle (Re-adjusted to use the correct selector and event)
    */
-  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
+  document.querySelectorAll('.faq-item h3').forEach((faqItemHeading) => {
+    // The original code was attaching to h3 AND .faq-toggle.
+    // If h3 itself is clickable and contains the .faq-toggle, this is fine.
+    // However, it's safer to attach to the toggle if it's a separate element.
+    // Given your original CSS had `cursor: pointer` on both, I'll assume h3 is the main click area.
+    faqItemHeading.addEventListener('click', () => {
+      // Find the closest parent with class 'faq-item'
+      const parentFaqItem = faqItemHeading.closest('.faq-item');
+      if (parentFaqItem) {
+        parentFaqItem.classList.toggle('faq-active');
+      }
     });
   });
+
+  // If .faq-toggle is a separate clickable element and not nested in h3,
+  // then you should explicitly add an event listener to it as well:
+  // document.querySelectorAll('.faq-item .faq-toggle').forEach((faqToggle) => {
+  //   faqToggle.addEventListener('click', () => {
+  //     const parentFaqItem = faqToggle.closest('.faq-item');
+  //     if (parentFaqItem) {
+  //       parentFaqItem.classList.toggle('faq-active');
+  //     }
+  //   });
+  // });
+
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
@@ -176,5 +290,20 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  // --- Initialize Language and related components on DOMContentLoaded ---
+  document.addEventListener('DOMContentLoaded', async () => {
+    const savedLang = localStorage.getItem('language');
+    const langToUse = savedLang || 'en'; // الإنجليزية هي الافتراضية إذا لم يتم حفظ لغة
+
+    // Apply initial language settings including RTL CSS
+    await setLanguage(langToUse);
+
+    // Now that language is set (and RTL CSS loaded if needed),
+    // initialize components that might be affected by language/direction
+    aosInit();
+    initSwiper();
+    // Any other initializations that should happen after language is set
+  });
 
 })();
