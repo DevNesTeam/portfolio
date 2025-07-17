@@ -328,4 +328,3 @@
     // Any other initializations that should happen after language is set
   });
 
-})();
