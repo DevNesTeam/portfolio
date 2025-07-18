@@ -45,10 +45,13 @@
   "team_p": "We are a passionate team of developers and designers turning ideas into innovative, high-impact applications.",
   "team_member1_name": "Mohammed Almostfa",
   "team_member1_role": "Backend Developer",
-  "team_member1_quote": "An experienced backend engineer focused on building smart, scalable, and secure systems for modern apps.",
+
+  "team_member1_quote": "Back-End Web Developer with over a year of hands-on experience building dynamic and robust web applications using PHP, Laravel, and MySQL. Proficient in applying SOLID principles and best practices in web security, I deliver high-performance solutions aligned with technical and business objectives. Passionate about continuous learning and staying up-to-date with the latest technologies to ensure project success.",
+
   "team_member2_name": "Sohiab Kamel",
   "team_member2_role": "Flutter Developer",
-  "team_member2_quote": "Specializes in building cross-platform mobile apps with a strong focus on performance and user experience.",
+ "team_member2_quote": "Passionate software developer with hands-on experience in mobile app development using Flutter, and backend development using Laravel and Firebase. Skilled in analyzing requirements and transforming them into functional, user-friendly applications. Strong in teamwork, data management, and API integration. Always eager to learn and stay up-to-date with modern technologies.",
+
   "team_member3_name": "Moayyad Nagib",
   "team_member3_role": "Flutter Developer",
   "team_member3_quote": "Expert in responsive UI and efficient mobile architecture, delivering seamless experiences across devices.",
