@@ -9,7 +9,7 @@
 (function() {
   "use strict";
 
-  // --- Mobile Nav Toggle (تم التأكيد على مكانه لضمان الأولوية) ---
+  // --- Mobile Nav Toggle (تم وضعه في البداية لضمان عمله) ---
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
@@ -17,6 +17,7 @@
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
+
   // مستمع الحدث الخاص بالزر الرئيسي لفتح/إغلاق القائمة
   if (mobileNavToggleBtn) { // تأكد من أن الزر موجود
     mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
@@ -117,39 +118,36 @@
 
   document.addEventListener('scroll', toggleScrolled);
   window.addEventListener('load', toggleScrolled);
-
+  
   /**
-   * Hide mobile nav on same-page/hash links and refine dropdown interaction
-   * هذا هو التعديل الرئيسي لحل مشكلة قائمة اللغة المنسدلة على الموبايل.
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      const isDropdownToggle = this.classList.contains('toggle-dropdown');
-      const isInsideActiveDropdown = this.closest('.dropdown.active');
-
-      if (document.querySelector('.mobile-nav-active')) {
-        if (isDropdownToggle) {
-          e.preventDefault(); 
-          e.stopImmediatePropagation(); 
-        } 
-        else if (!isInsideActiveDropdown || this.hash) {
-          mobileNavToogle();
-        }
-      }
-    });
-  });
-
-  /**
-   * Toggle mobile nav dropdowns (لا توجد تغييرات هنا، فهي تتعامل مع حالة القائمة المنسدلة الداخلية)
+   * Toggle mobile nav dropdowns (مهم جداً: إيقاف انتشار الحدث لضمان عمل القوائم المنسدلة)
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
     navmenu.addEventListener('click', function(e) {
       e.preventDefault();
+      // هذا السطر يمنع النقر من الوصول إلى الروابط الأبوية، مما يمنع إغلاق القائمة الرئيسية.
+      e.stopImmediatePropagation(); 
       this.parentNode.classList.toggle('active');
       this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
     });
   });
+
+  /**
+   * Hide mobile nav on same-page/hash links (تم تبسيطه لعدم التعارض)
+   */
+  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+    navmenu.addEventListener('click', function(e) {
+      // إذا كانت القائمة المنسدلة الأبوية ليست نشطة (أي أنك نقرت على رابط عادي)
+      // أو إذا كنت نقرت على رابط هاش (#) داخل قائمة منسدلة
+      // قم بإغلاق قائمة الموبايل.
+      const isInsideActiveDropdown = this.closest('.dropdown.active');
+      
+      if (document.querySelector('.mobile-nav-active') && (!isInsideActiveDropdown || this.hash)) {
+        mobileNavToogle();
+      }
+    });
+  });
+
 
   /**
    * Preloader
@@ -203,10 +201,11 @@
         swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
 
+      // ملاحظة: إذا لم تكن الدالة 'initSwiperWithCustomPagination' معرفة في مكان ما،
+      // فقد يتسبب هذا السطر في خطأ. تأكد من وجودها أو أزل هذا الشرط.
       if (swiperElement.classList.contains("swiper-tab")) {
-        // تأكد من أن هذه الدالة 'initSwiperWithCustomPagination' معرفة في مكان ما.
-        // وإلا، قم بإزالة هذا الشرط إذا لم تكن تستخدمها.
-        initSwiperWithCustomPagination(swiperElement, config);
+        // initSwiperWithCustomPagination(swiperElement, config); // إذا لم تكن موجودة، قم بتعطيل هذا السطر
+        new Swiper(swiperElement, config); // أو استخدم هذا السطر مباشرة
       } else {
         new Swiper(swiperElement, config);
       }
