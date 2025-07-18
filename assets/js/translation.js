@@ -6,6 +6,7 @@
 
   // Path to translation files, relative to the HTML files using it.
   // Assuming HTML files are in 'app-details/' and 'translations' is in the project root.
+  const isGithub = location.hostname.includes('github.io');
 const TRANSLATIONS_BASE_PATH = isGithub 
   ? '/portfolio/translations/' 
   : './translations/';
