@@ -2,6 +2,7 @@
   "site_name": "DevNest Team",
   "nav_home": "Home",
   "nav_about": "About",
+    "nav_language":"Language",
   "nav_features": "Features",
   "nav_pricing": "Pricing",
   "nav_dropdown": "Dropdown",

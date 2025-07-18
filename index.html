@@ -37,19 +37,26 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <h1 class="sitename" data-translate-key="site_name">DevNest Team</h1>
       </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active" data-translate-key="nav_home">Home</a></li>
+          <li><a href="#about" data-translate-key="nav_about">About</a></li>
+          <li><a href="#featured" data-translate-key="nav_features">Features</a></li>li>
+          <li><a href="#contact" data-translate-key="nav_contact">Contact</a></li>
+          <li class="dropdown"><a href="#" ><span data-translate-key="nav_language">language</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a class="dropdown-item" href="#" onclick="setLanguage('ar'); return false;">العربية</a></li>
+              <li><a class="dropdown-item" href="#" onclick="setLanguage('en'); return false;">English</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-<nav id="navmenu" class="navmenu">
-  <ul>
-    <li><a href="#hero" class="active" data-translate-key="nav_home">Home</a></li>
-    <li><a href="#about" data-translate-key="nav_about">About</a></li>
-    <li><a href="#featured" data-translate-key="nav_features">Features</a></li>
-    <li><a href="#contact" data-translate-key="nav_contact">Contact</a></li>
-     <li><a class="dropdown-item" href="#" onclick="setLanguage('ar'); return false;">العربية</a></li>
-             <li><a class="dropdown-item" href="#" onclick="setLanguage('en'); return false;">English</a></li>
-   
-  </ul>
-  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-</nav>
+
+
+
 
     </div>
   </header>
@@ -66,9 +73,10 @@
           <div class="col-lg-8 d-flex flex-column justify-content-center align-items text-center text-md-start"
             data-aos="fade-up">
             <h2 data-translate-key="hero_title">Turn Your App Idea into Reality</h2>
-            <p data-translate-key="hero_subtitle">We’re a creative team dedicated to building powerful, user-friendly mobile apps that make an impact.</p>
+            <p data-translate-key="hero_subtitle">We’re a creative team dedicated to building powerful, user-friendly
+              mobile apps that make an impact.</p>
 
-          
+
           </div>
         </div>
       </div>
@@ -80,11 +88,13 @@
           <div class="col-xl-5 content">
             <h3 data-translate-key="about_us_heading">About Us</h3>
             <h2 data-translate-key="about_us_title">We Turn Ideas into Powerful Mobile Applications</h2>
-            <p data-translate-key="about_us_p">We are a team of expert developers specializing in mobile app development. From designing stunning UI/UX
+            <p data-translate-key="about_us_p">We are a team of expert developers specializing in mobile app
+              development. From designing stunning UI/UX
               to building robust backends with Laravel and Flutter, we offer complete, scalable solutions. We also
               handle publishing to Google Play — turning your ideas into real-world mobile apps has never been easier.
             </p>
-            <a href="#" class="read-more"><span data-translate-key="read_more_btn">Read More</span><i class="bi bi-arrow-right"></i></a>
+            <a href="#" class="read-more"><span data-translate-key="read_more_btn">Read More</span><i
+                class="bi bi-arrow-right"></i></a>
           </div>
 
           <div class="col-xl-7">
@@ -94,7 +104,8 @@
                 <div class="icon-box">
                   <i class="bi bi-phone"></i>
                   <h3 data-translate-key="service1_title">Mobile App Development</h3>
-                  <p data-translate-key="service1_p">We build high-performance Android applications using Flutter, tailored to your vision and audience.
+                  <p data-translate-key="service1_p">We build high-performance Android applications using Flutter,
+                    tailored to your vision and audience.
                   </p>
                 </div>
               </div>
@@ -103,7 +114,8 @@
                 <div class="icon-box">
                   <i class="bi bi-server"></i>
                   <h3 data-translate-key="service2_title">Backend with Laravel</h3>
-                  <p data-translate-key="service2_p">Robust and scalable backend development using Laravel to support any app logic or data structure.
+                  <p data-translate-key="service2_p">Robust and scalable backend development using Laravel to support
+                    any app logic or data structure.
                   </p>
                 </div>
               </div>
@@ -112,7 +124,8 @@
                 <div class="icon-box">
                   <i class="bi bi-palette2"></i>
                   <h3 data-translate-key="service3_title">UI/UX Design</h3>
-                  <p data-translate-key="service3_p">Visually appealing, user-friendly designs to ensure the best user experience across all devices.
+                  <p data-translate-key="service3_p">Visually appealing, user-friendly designs to ensure the best user
+                    experience across all devices.
                   </p>
                 </div>
               </div>
@@ -121,7 +134,8 @@
                 <div class="icon-box">
                   <i class="bi bi-cloud-upload"></i>
                   <h3 data-translate-key="service4_title">App Publishing</h3>
-                  <p data-translate-key="service4_p">We handle the entire process of uploading and optimizing your app for Google Play Store.</p>
+                  <p data-translate-key="service4_p">We handle the entire process of uploading and optimizing your app
+                    for Google Play Store.</p>
                 </div>
               </div>
 
@@ -134,7 +148,8 @@
     <section id="featured" class="featured section">
       <div class="container section-title" data-aos="fade-up">
         <h2 data-translate-key="why_us_title">Why Choose DevNest?</h2>
-        <p data-translate-key="why_us_subtitle">We offer innovative solutions tailored for startups and businesses ready to scale in the mobile world.</p>
+        <p data-translate-key="why_us_subtitle">We offer innovative solutions tailored for startups and businesses ready
+          to scale in the mobile world.</p>
       </div>
       <div class="container">
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
@@ -192,7 +207,8 @@
             <div class="card-item">
               <span>01</span>
               <h4 data-translate-key="step1_title">Get in Touch</h4>
-              <p data-translate-key="step1_p">Contact our team and tell us about your app idea. We’ll schedule a discovery call to understand your
+              <p data-translate-key="step1_p">Contact our team and tell us about your app idea. We’ll schedule a
+                discovery call to understand your
                 goals.</p>
             </div>
           </div>
@@ -200,7 +216,8 @@
             <div class="card-item">
               <span>02</span>
               <h4 data-translate-key="step2_title">Plan & Prototype</h4>
-              <p data-translate-key="step2_p">We’ll craft a roadmap and wireframe to bring your concept to life with visual clarity and strategic
+              <p data-translate-key="step2_p">We’ll craft a roadmap and wireframe to bring your concept to life with
+                visual clarity and strategic
                 planning.</p>
             </div>
           </div>
@@ -208,7 +225,8 @@
             <div class="card-item">
               <span>03</span>
               <h4 data-translate-key="step3_title">Build & Launch</h4>
-              <p data-translate-key="step3_p">Our developers code, test, and publish your app, ensuring quality performance and smooth deployment.
+              <p data-translate-key="step3_p">Our developers code, test, and publish your app, ensuring quality
+                performance and smooth deployment.
               </p>
             </div>
           </div>
@@ -220,105 +238,118 @@
     <section id="gallery" class="gallery section">
       <div class="container section-title" data-aos="fade-up">
         <h2 data-translate-key="index_gallery_title">Our Applications</h2>
-        <p data-translate-key="index_gallery_p">Swipe through our apps and explore what we’ve created to solve real problems with elegant solutions.</p>
+        <p data-translate-key="index_gallery_p">Swipe through our apps and explore what we’ve created to solve real
+          problems with elegant solutions.</p>
       </div>
       <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
         <div class="swiper init-swiper">
 
 
           <script type="application/json" class="swiper-config">
-{
-  "loop": true,
-  "speed": 600,
-  "autoplay": {
-    "delay": 2000,
-    "disableOnInteraction": false
-  },
-  "centeredSlides": true,
-  "spaceBetween": 30,
-  "slidesPerView": "auto",
-  "pagination": {
-    "el": ".swiper-pagination",
-    "type": "bullets",
-    "clickable": true
-  },
-  "breakpoints": {
-    "320": {
-      "slidesPerView": 1,
-      "spaceBetween": 10
-    },
-    "768": {
-      "slidesPerView": 2,
-      "spaceBetween": 20
-    },
-    "992": {
-      "slidesPerView": 3,
-      "spaceBetween": 30
-    },
-    "1200": {
-      "slidesPerView": 4,
-      "spaceBetween": 30
-    }
-  }
-}
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 2000,
+                "disableOnInteraction": false
+              },
+              "centeredSlides": true,
+              "spaceBetween": 30,
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 10
+                },
+                "768": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 20
+                },
+                "992": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 30
+                },
+                "1200": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 30
+                }
+              }
+            }
           </script>
-<div class="swiper-wrapper align-items-stretch">
+          <div class="swiper-wrapper align-items-stretch">
 
-  <div class="swiper-slide">
-    <div class="card text-center shadow p-4 h-100">
-      <img src="assets/img/ChatBox/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;" alt="App Icon" loading="lazy">
-      <h5 class="mb-2">ChatBox</h5>
-      <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
-      <a href="app-details/ChatBox.html" class="btn btn-outline-primary btn-sm mt-2" data-translate-key="view_details_btn">View Details</a>
-    </div>
-  </div>
+            <div class="swiper-slide">
+              <div class="card text-center shadow p-4 h-100">
+                <img src="assets/img/ChatBox/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;"
+                  alt="App Icon" loading="lazy">
+                <h5 class="mb-2">ChatBox</h5>
+                <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
+                <a href="app-details/ChatBox.html" class="btn btn-outline-primary btn-sm mt-2"
+                  data-translate-key="view_details_btn">View Details</a>
+              </div>
+            </div>
 
-  <div class="swiper-slide">
-    <div class="card text-center shadow p-4 h-100">
-      <img src="assets/img/E-Commerce/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;" alt="App Icon" loading="lazy">
-      <h5 class="mb-2">E-Commerce</h5>
-      <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
-      <a href="app-details/E-Commerce.html" class="btn btn-outline-primary btn-sm mt-2" data-translate-key="view_details_btn">View Details</a>
-    </div>
-  </div>
+            <div class="swiper-slide">
+              <div class="card text-center shadow p-4 h-100">
+                <img src="assets/img/E-Commerce/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;"
+                  alt="App Icon" loading="lazy">
+                <h5 class="mb-2">E-Commerce</h5>
+                <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
+                <a href="app-details/E-Commerce.html" class="btn btn-outline-primary btn-sm mt-2"
+                  data-translate-key="view_details_btn">View Details</a>
+              </div>
+            </div>
 
-  <div class="swiper-slide">
-    <div class="card text-center shadow p-4 h-100">
-      <img src="assets/img/Mado/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;" alt="App Icon" loading="lazy">
-      <h5 class="mb-2">Mado</h5>
-      <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
-      <a href="app-details/Mado.html" class="btn btn-outline-primary btn-sm mt-2" data-translate-key="view_details_btn">View Details</a>
-    </div>
-  </div>
+            <div class="swiper-slide">
+              <div class="card text-center shadow p-4 h-100">
+                <img src="assets/img/Mado/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;"
+                  alt="App Icon" loading="lazy">
+                <h5 class="mb-2">Mado</h5>
+                <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
+                <a href="app-details/Mado.html" class="btn btn-outline-primary btn-sm mt-2"
+                  data-translate-key="view_details_btn">View Details</a>
+              </div>
+            </div>
 
-  <div class="swiper-slide">
-    <div class="card text-center shadow p-4 h-100">
-      <img src="assets/img/Wasselni/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;" alt="App Icon" loading="lazy">
-      <h5 class="mb-2">Wasselni</h5>
-      <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
-      <a href="app-details/Wasselni.html" class="btn btn-outline-primary btn-sm mt-2" data-translate-key="view_details_btn">View Details</a>
-    </div>
-  </div>
+            <div class="swiper-slide">
+              <div class="card text-center shadow p-4 h-100">
+                <img src="assets/img/Wasselni/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;"
+                  alt="App Icon" loading="lazy">
+                <h5 class="mb-2">Wasselni</h5>
+                <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
+                <a href="app-details/Wasselni.html" class="btn btn-outline-primary btn-sm mt-2"
+                  data-translate-key="view_details_btn">View Details</a>
+              </div>
+            </div>
 
-  <div class="swiper-slide">
-    <div class="card text-center shadow p-4 h-100">
-      <img src="assets/img/listaa/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;" alt="App Icon" loading="lazy">
-      <h5 class="mb-2">Listaa</h5>
-      <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
-      <a href="app-details/listaa.html" class="btn btn-outline-primary btn-sm mt-2" data-translate-key="view_details_btn">View Details</a>
-    </div>
-  </div>
+            <div class="swiper-slide">
+              <div class="card text-center shadow p-4 h-100">
+                <img src="assets/img/listaa/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;"
+                  alt="App Icon" loading="lazy">
+                <h5 class="mb-2">Listaa</h5>
+                <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
+                <a href="app-details/listaa.html" class="btn btn-outline-primary btn-sm mt-2"
+                  data-translate-key="view_details_btn">View Details</a>
+              </div>
+            </div>
 
-  <div class="swiper-slide">
-    <div class="card text-center shadow p-4 h-100">
-      <img src="assets/img/Obg/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;" alt="App Icon" loading="lazy">
-      <h5 class="mb-2">Obg</h5>
-      <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
-      <a href="app-details/Obg.html" class="btn btn-outline-primary btn-sm mt-2" data-translate-key="view_details_btn">View Details</a>
-    </div>
-  </div>
+            <div class="swiper-slide">
+              <div class="card text-center shadow p-4 h-100">
+                <img src="assets/img/Obg/icon.jpg" class="img-fluid mx-auto mb-3 rounded-3" style="width: 80px;"
+                  alt="App Icon" loading="lazy">
+                <h5 class="mb-2">Obg</h5>
+                <p class="text-muted small" data-translate-key="app_desc">Description for the application.</p>
+                <a href="app-details/Obg.html" class="btn btn-outline-primary btn-sm mt-2"
+                  data-translate-key="view_details_btn">View Details</a>
+              </div>
+            </div>
 
-</div>
+          </div>
 
           <div class="swiper-pagination mt-4"></div>
 
@@ -328,7 +359,8 @@
     <section id="team" class="testimonials section bg-light py-5">
       <div class="container section-title text-center" data-aos="fade-up">
         <h2 data-translate-key="team_title">Team Members</h2>
-        <p data-translate-key="team_p">We are a passionate team of developers and designers turning ideas into innovative, high-impact applications.
+        <p data-translate-key="team_p">We are a passionate team of developers and designers turning ideas into
+          innovative, high-impact applications.
         </p>
       </div>
 
@@ -359,7 +391,8 @@
                 <h4 data-translate-key="team_member1_role">Backend Developer</h4>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span data-translate-key="team_member1_quote">An experienced backend engineer focused on building smart, scalable, and secure systems for modern apps.</span>
+                  <span data-translate-key="team_member1_quote">An experienced backend engineer focused on building
+                    smart, scalable, and secure systems for modern apps.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -372,7 +405,8 @@
                 <h4 data-translate-key="team_member2_role">Flutter Developer</h4>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span data-translate-key="team_member2_quote">Specializes in building cross-platform mobile apps with a strong focus on performance and user experience.</span>
+                  <span data-translate-key="team_member2_quote">Specializes in building cross-platform mobile apps with
+                    a strong focus on performance and user experience.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -385,7 +419,8 @@
                 <h4 data-translate-key="team_member3_role">Flutter Developer</h4>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span data-translate-key="team_member3_quote">Expert in responsive UI and efficient mobile architecture, delivering seamless experiences across devices.</span>
+                  <span data-translate-key="team_member3_quote">Expert in responsive UI and efficient mobile
+                    architecture, delivering seamless experiences across devices.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -398,7 +433,8 @@
                 <h4 data-translate-key="team_member4_role">UI/UX Designer</h4>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span data-translate-key="team_member4_quote">Creative designer crafting beautiful and intuitive interfaces that elevate the user journey.</span>
+                  <span data-translate-key="team_member4_quote">Creative designer crafting beautiful and intuitive
+                    interfaces that elevate the user journey.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -414,7 +450,8 @@
     <section id="faq" class="faq section">
       <div class="container section-title" data-aos="fade-up">
         <h2 data-translate-key="faq_title">Frequently Asked Questions</h2>
-        <p data-translate-key="faq_p">Answers to the most common questions about working with DevNest and building your mobile app.</p>
+        <p data-translate-key="faq_p">Answers to the most common questions about working with DevNest and building your
+          mobile app.</p>
       </div>
       <div class="container">
         <div class="row justify-content-center">
@@ -424,7 +461,8 @@
               <div class="faq-item faq-active">
                 <h3 data-translate-key="faq_q1">How long does it take to develop a mobile app?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a1">Development time varies depending on the complexity of the app, but most projects take between 4 to
+                  <p data-translate-key="faq_a1">Development time varies depending on the complexity of the app, but
+                    most projects take between 4 to
                     10 weeks from start to launch.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -433,7 +471,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q2">Do you only build Android apps or also iOS?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a2">We use Flutter, a cross-platform framework, which allows us to build apps for both Android and iOS
+                  <p data-translate-key="faq_a2">We use Flutter, a cross-platform framework, which allows us to build
+                    apps for both Android and iOS
                     from a single codebase.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -442,7 +481,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q3">Can you help me publish the app on Google Play or App Store?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a3">Yes, we offer complete publishing support including preparing assets, writing store descriptions,
+                  <p data-translate-key="faq_a3">Yes, we offer complete publishing support including preparing assets,
+                    writing store descriptions,
                     and managing the submission process.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -451,7 +491,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q4">Do I need to have designs before I contact you?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a4">No worries if you don’t — our UI/UX team can design your app from scratch based on your brand and
+                  <p data-translate-key="faq_a4">No worries if you don’t — our UI/UX team can design your app from
+                    scratch based on your brand and
                     target audience.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -460,7 +501,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q5">What technologies do you use for backend development?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a5">We use Laravel, a powerful PHP framework, to build scalable, secure, and performant APIs for your
+                  <p data-translate-key="faq_a5">We use Laravel, a powerful PHP framework, to build scalable, secure,
+                    and performant APIs for your
                     mobile applications.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -469,7 +511,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q6">How much does it cost to build an app with DevNest?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a6">Pricing depends on the features and complexity of your app. We offer flexible packages for startups
+                  <p data-translate-key="faq_a6">Pricing depends on the features and complexity of your app. We offer
+                    flexible packages for startups
                     and businesses — contact us for a free quote.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -478,7 +521,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q7">What kind of support do you offer after the app is delivered?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a7">We provide <strong>6 months of free maintenance</strong> after delivery. This includes bug fixes,
+                  <p data-translate-key="faq_a7">We provide <strong>6 months of free maintenance</strong> after
+                    delivery. This includes bug fixes,
                     minor updates, and ensuring your app runs smoothly on new OS versions.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -487,7 +531,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q8">Can I update the app later with new features?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a8">Yes! We build apps with scalability in mind, so you can always add new features or improvements in
+                  <p data-translate-key="faq_a8">Yes! We build apps with scalability in mind, so you can always add new
+                    features or improvements in
                     future versions.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -496,7 +541,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q9">Do you sign NDAs to protect my app idea?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a9">Absolutely. We’re happy to sign a Non-Disclosure Agreement to keep your app idea secure and
+                  <p data-translate-key="faq_a9">Absolutely. We’re happy to sign a Non-Disclosure Agreement to keep your
+                    app idea secure and
                     confidential.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -505,7 +551,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q10">Who owns the code after the app is built?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a10">You do. Once the project is complete and payment is made, you will have full ownership of the
+                  <p data-translate-key="faq_a10">You do. Once the project is complete and payment is made, you will
+                    have full ownership of the
                     source code and all deliverables.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -514,7 +561,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q11">Can you redesign or upgrade an existing app?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a11">Yes, we can analyze your current app and offer UI/UX improvements, performance upgrades, or
+                  <p data-translate-key="faq_a11">Yes, we can analyze your current app and offer UI/UX improvements,
+                    performance upgrades, or
                     complete rebuilds as needed.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -523,7 +571,8 @@
               <div class="faq-item">
                 <h3 data-translate-key="faq_q12">What’s your development process like?</h3>
                 <div class="faq-content">
-                  <p data-translate-key="faq_a12">We follow a clear workflow: discovery → design → development → testing → launch → support. You’ll
+                  <p data-translate-key="faq_a12">We follow a clear workflow: discovery → design → development → testing
+                    → launch → support. You’ll
                     be involved in every key step.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -537,7 +586,8 @@
     <section id="contact" class="contact section">
       <div class="container section-title" data-aos="fade-up">
         <h2 data-translate-key="contact_title">Contact Us</h2>
-        <p data-translate-key="contact_p">Feel free to reach out to us with any questions or inquiries. We're here to help!</p>
+        <p data-translate-key="contact_p">Feel free to reach out to us with any questions or inquiries. We're here to
+          help!</p>
       </div>
       <div class="container" data-aos="fade" data-aos-delay="100">
 
@@ -567,19 +617,23 @@
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" data-translate-key="form_name_placeholder" required="">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name"
+                    data-translate-key="form_name_placeholder" required="">
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" data-translate-key="form_email_placeholder" required="">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email"
+                    data-translate-key="form_email_placeholder" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" data-translate-key="form_subject_placeholder" required="">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject"
+                    data-translate-key="form_subject_placeholder" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" data-translate-key="form_message_placeholder" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message"
+                    data-translate-key="form_message_placeholder" required=""></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
@@ -603,7 +657,8 @@
   <footer id="footer" class="footer dark-background">
     <div class="container">
       <h3 class="sitename" data-translate-key="site_name">DevNest Team</h3>
-      <p data-translate-key="footer_p">We provide reliable solutions to help you achieve your goals efficiently and effortlessly.</p>
+      <p data-translate-key="footer_p">We provide reliable solutions to help you achieve your goals efficiently and
+        effortlessly.</p>
       <div class="social-links d-flex justify-content-center">
         <a href="https://x.com/Devnest_Team?t=xLOYzyeMeId-iJmlXjy0JQ&s=09"><i class="bi bi-twitter-x"></i></a>
         <a href="https://www.facebook.com/share/1BrLLprqzS/"><i class="bi bi-facebook"></i></a>
@@ -623,7 +678,7 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
-  
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
