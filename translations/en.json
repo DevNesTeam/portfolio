@@ -175,5 +175,23 @@
   "wasselni_feature3": "In-app chat with drivers",
   "wasselni_feature4": "Light and dark mode options",
   "wasselni_feature5": "Smooth, intuitive user interface",
-  "wasselni_final_note": "Wasselni transforms your travel experience by offering convenient and reliable rides with just a few taps."
+  "wasselni_final_note": "Wasselni transforms your travel experience by offering convenient and reliable rides with just a few taps.",
+
+  "mado_overview_title": "Mado Application Overview",
+  "mado_section_heading": "Mado Application Overview",
+  "mado_section_subtitle": "A quick overview of Mado's features, platform support, and development details.",
+  "mado_app_name": "📚 App Name: Mado",
+  "mado_app_description": "<strong>Mado</strong> is an interactive educational application designed to enhance learning through subject-based organization and collaborative features.",
+  "mado_launch_date": "📅 Launch Date: September 2025",
+  "mado_platforms": "💻 Platforms: Android, iOS",
+  "mado_status": "🛠️ Status: In Development",
+  "mado_technologies": "🧰 Technologies: Flutter",
+  "mado_features_heading": "Key Features:",
+  "mado_feature1": "<strong>Subject Categorization:</strong> Study materials organized by subjects with multiple lessons.",
+  "mado_feature2": "<strong>Lesson Videos:</strong> Clear, explanatory videos accompanying each lesson.",
+  "mado_feature3": "<strong>Practice Activities:</strong> Engaging activities to reinforce knowledge after videos.",
+  "mado_feature4": "<strong>Community Interaction:</strong> Share activities and receive feedback within the Mado community.",
+  "mado_feature5": "<strong>Collaborative Learning:</strong> Promote discussion and engagement among users.",
+  "mado_final_note": "Mado combines structured education with social learning elements, making it an ideal platform for students seeking a more collaborative and engaging study experience."
+
 }
