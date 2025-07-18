@@ -1,42 +1,11 @@
-/**
-* Template Name: SoftLand
-* Template URL: https://bootstrapmade.com/softland-bootstrap-app-landing-page-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 (function() {
   "use strict";
 
-
- /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle'); // هذا السطر بيحاول يلاقي الزر
-
-  function mobileNavToogle() {
-    // هذا السطر ببدّل الكلاس "mobile-nav-active" على الـ body لفتح/إغلاق القائمة
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    // وهاد بغير أيقونة الزر بين الهامبرغر و X
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
-
-  // هذا السطر مهم جداً، بيضيف مستمع حدث (Event Listener) لزر التنقل
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-
-  // ... (باقي أكواد القالب) ...
-
-})();
-
-  
-  // --- Translation Variables & Functions (moved to top for better scope) ---
+  // --- Translation Variables & Functions ---
   const translations = {};
   let currentLang = '';
 
-  // المسار الأساسي لملفات الترجمة بالنسبة لملف HTML الرئيسي (index.html)
-  // تأكد أن مجلد 'translations' موجود في نفس مستوى ملف HTML الرئيسي
   const TRANSLATIONS_BASE_PATH = './translations/';
 
   async function loadTranslations(lang) {
@@ -56,7 +25,6 @@
     }
   }
 
-  // دالة لتغيير لغة الموقع (متاحة عالمياً)
   window.setLanguage = async (lang) => {
     localStorage.setItem('language', lang);
     currentLang = lang;
@@ -65,7 +33,6 @@
       await loadTranslations(lang);
     }
 
-    // تطبيق الترجمات على جميع العناصر التي تحمل data-translate-key
     document.querySelectorAll('[data-translate-key]').forEach(element => {
       const key = element.getAttribute('data-translate-key');
       if (translations[lang] && translations[lang][key]) {
@@ -79,16 +46,14 @@
       }
     });
 
-    // التعامل مع اتجاه النص (RTL/LTR) وتحميل/إزالة ملف CSS الخاص بـ RTL
     if (lang === 'ar') {
       document.documentElement.setAttribute('dir', 'rtl');
       document.documentElement.setAttribute('lang', 'ar');
 
       let rtlLink = document.getElementById('rtl-style');
-      if (!rtlLink) { // إذا لم يكن ملف الـ RTL CSS محملاً، قم بتحميله
+      if (!rtlLink) {
         rtlLink = document.createElement('link');
         rtlLink.rel = 'stylesheet';
-        // المسار هنا يكون نسبةً لملف HTML الرئيسي (index.html)
         rtlLink.href = 'assets/css/main-rtl.css';
         rtlLink.id = 'rtl-style';
         document.head.appendChild(rtlLink);
@@ -99,13 +64,12 @@
       document.documentElement.setAttribute('lang', lang);
 
       const rtlLink = document.getElementById('rtl-style');
-      if (rtlLink) { // إذا كان ملف الـ RTL CSS محملاً، قم بإزالته
+      if (rtlLink) {
         rtlLink.remove();
         console.log('RTL stylesheet removed.');
       }
     }
 
-    // تحديث النص المعروض لزر اختيار اللغة في القائمة المنسدلة
     const currentLangDisplay = document.getElementById('current-language-display');
     if (currentLangDisplay) {
         const dropdownKey = currentLangDisplay.getAttribute('data-translate-key');
@@ -211,8 +175,6 @@
       mirror: false
     });
   }
-  // Changed from window.addEventListener('load', aosInit);
-  // aosInit will be called by initializeLanguage() to ensure it runs after language is set.
 
   /**
    * Init swiper sliders
@@ -224,18 +186,12 @@
       );
 
       if (swiperElement.classList.contains("swiper-tab")) {
-        // Assuming initSwiperWithCustomPagination is defined elsewhere or not used if not present
-        // If it's not defined, this line will cause an error.
-        // Make sure it's part of your project or remove this conditional.
-        // For now, I'll keep it as per your original code.
         initSwiperWithCustomPagination(swiperElement, config);
       } else {
         new Swiper(swiperElement, config);
       }
     });
   }
-  // Changed from window.addEventListener("load", initSwiper);
-  // initSwiper will be called by initializeLanguage() to ensure it runs after language is set.
 
   /**
    * Initiate glightbox
@@ -245,32 +201,16 @@
   });
 
   /**
-   * Frequently Asked Questions Toggle (Re-adjusted to use the correct selector and event)
+   * Frequently Asked Questions Toggle
    */
   document.querySelectorAll('.faq-item h3').forEach((faqItemHeading) => {
-    // The original code was attaching to h3 AND .faq-toggle.
-    // If h3 itself is clickable and contains the .faq-toggle, this is fine.
-    // However, it's safer to attach to the toggle if it's a separate element.
-    // Given your original CSS had `cursor: pointer` on both, I'll assume h3 is the main click area.
     faqItemHeading.addEventListener('click', () => {
-      // Find the closest parent with class 'faq-item'
       const parentFaqItem = faqItemHeading.closest('.faq-item');
       if (parentFaqItem) {
         parentFaqItem.classList.toggle('faq-active');
       }
     });
   });
-
-  // If .faq-toggle is a separate clickable element and not nested in h3,
-  // then you should explicitly add an event listener to it as well:
-  // document.querySelectorAll('.faq-item .faq-toggle').forEach((faqToggle) => {
-  //   faqToggle.addEventListener('click', () => {
-  //     const parentFaqItem = faqToggle.closest('.faq-item');
-  //     if (parentFaqItem) {
-  //       parentFaqItem.classList.toggle('faq-active');
-  //     }
-  //   });
-  // });
 
 
   /**
@@ -316,15 +256,82 @@
   // --- Initialize Language and related components on DOMContentLoaded ---
   document.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('language');
-    const langToUse = savedLang || 'en'; // الإنجليزية هي الافتراضية إذا لم يتم حفظ لغة
+    const langToUse = savedLang || 'en';
 
-    // Apply initial language settings including RTL CSS
     await setLanguage(langToUse);
 
-    // Now that language is set (and RTL CSS loaded if needed),
-    // initialize components that might be affected by language/direction
     aosInit();
     initSwiper();
-    // Any other initializations that should happen after language is set
   });
 
+
+  /**
+ * Init swiper sliders
+ */
+function initSwiper() {
+  // Define the Swiper configuration directly in JavaScript
+  const gallerySwiperConfig = {
+    "loop": true,
+    "speed": 600,
+    "autoplay": {
+      "delay": 2000,
+      "disableOnInteraction": false
+    },
+    "centeredSlides": true,
+    "spaceBetween": 30,
+    "slidesPerView": "auto",
+    "pagination": {
+      "el": ".swiper-pagination",
+      "type": "bullets",
+      "clickable": true
+    },
+    "breakpoints": {
+      "320": {
+        "slidesPerView": 1,
+        "spaceBetween": 10
+      },
+      "768": {
+        "slidesPerView": 2,
+        "spaceBetween": 20
+      },
+      "992": {
+        "slidesPerView": 3,
+        "spaceBetween": 30
+      },
+      "1200": {
+        "slidesPerView": 4,
+        "spaceBetween": 30
+      }
+    }
+  };
+
+  // Select the specific Swiper element by its ID or a unique class
+  // Assuming '#gallery .init-swiper' uniquely identifies your gallery Swiper
+  const gallerySwiperElement = document.querySelector('#gallery .init-swiper');
+
+  if (gallerySwiperElement) {
+    // Check if it's a "swiper-tab" or a regular Swiper
+    if (gallerySwiperElement.classList.contains("swiper-tab")) {
+      // If you have custom pagination for tabs, use that function
+      // Make sure initSwiperWithCustomPagination is defined elsewhere in your JS
+      initSwiperWithCustomPagination(gallerySwiperElement, gallerySwiperConfig);
+    } else {
+      // Initialize the Swiper with the defined configuration
+      new Swiper(gallerySwiperElement, gallerySwiperConfig);
+    }
+  }
+
+  // If you have other Swipers, you would add similar blocks for them,
+  // each with their own unique selector and config object.
+  // Example for another Swiper (if you had one):
+  /*
+  const anotherSwiperElement = document.querySelector('.another-swiper-class');
+  const anotherSwiperConfig = {
+      // ... its specific configuration ...
+  };
+  if (anotherSwiperElement) {
+      new Swiper(anotherSwiperElement, anotherSwiperConfig);
+  }
+  */
+}
+})();

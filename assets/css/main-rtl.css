@@ -1,25 +1,16 @@
-/*
-* ملف: assets/css/main-rtl.css
-* هذا الملف مخصص لتعديلات CSS للغة العربية (RTL) لقالب SoftLand
-* يجب أن يتم تحميله ديناميكياً بواسطة JavaScript عندما تكون اللغة عربية
-* بناءً على محتوى main.css الأصلي.
-*/
+/* File: assets/css/main-rtl.css
+   This file contains CSS overrides for Arabic RTL layout for the SoftLand template.
+   It should be dynamically loaded via JavaScript when Arabic is selected. */
 
-/* -----------------------------------------------------------
-   قواعد عامة وإعادة ضبط لـ RTL
-   ----------------------------------------------------------- */
-
-/* ضبط اتجاه النص العام لـ HTML و body */
+/* General RTL Reset and Direction Rules */
 html[dir="rtl"] {
     direction: rtl;
 }
 
 html[dir="rtl"] body {
-    text-align: right; /* محاذاة النص الافتراضية لليمين */
+    text-align: right;
 }
 
-/* إعادة ضبط الهوامش والحشو الافتراضية للعناصر التي كانت تعتمد على Left */
-/* استخدمنا initial لإلغاء و auto أو 0 لإعادة الضبط ثم تحديد القيم الجديدة */
 html[dir="rtl"] .me-auto,
 html[dir="rtl"] .ms-auto {
     margin-left: initial !important;
@@ -34,351 +25,292 @@ html[dir="rtl"] .text-end {
     text-align: left !important;
 }
 
-/* -----------------------------------------------------------
-   الـ Header والقائمة التنقل (Navbar)
-   ----------------------------------------------------------- */
-
-/* تعديل موقع الشعار إذا كان لديه float أو margin-right/left */
+/* Header and Navbar */
 html[dir="rtl"] .header .logo {
-    /* إذا كان لديه margin-right في LTR */
     margin-right: 0;
-    margin-left: 8px; /* أو أزله إذا لم يكن بحاجة لمسافة إضافية */
+    margin-left: 8px;
 }
 
-/* Navmenu - Desktop */
 @media (min-width: 1200px) {
     html[dir="rtl"] .navmenu ul {
-        /* إذا كانت القائمة تطفو لليسار أو لديها padding-left */
-        padding-right: 0; /* إلغاء padding-left الافتراضي */
+        padding-right: 0;
         padding-left: 0;
     }
 
     html[dir="rtl"] .navmenu a i,
     html[dir="rtl"] .navmenu a:focus i {
-        /* الأيقونة داخل رابط القائمة (dropdown indicator) */
-        margin-left: 0; /* إلغاء margin-left */
-        margin-right: 5px; /* إضافة margin-right */
-        transform: scaleX(-1); /* لقلب السهم */
+        margin-left: 0;
+        margin-right: 5px;
+        transform: scaleX(-1);
     }
 
     html[dir="rtl"] .navmenu li:last-child a {
-        padding-left: 0; /* إذا كانت padding-right 0 في LTR */
+        padding-left: 0;
     }
 
     html[dir="rtl"] .navmenu .dropdown ul {
-        /* موقع القائمة المنسدلة (dropdown) */
         left: auto;
-        right: 14px; /* نقلها لليمين */
+        right: 14px;
     }
 
     html[dir="rtl"] .navmenu .dropdown ul a i {
-        /* أيقونة القائمة المنسدلة الفرعية */
-        margin-right: 5px; /* لإعطاء مسافة على اليمين */
+        margin-right: 5px;
         margin-left: 0;
-        transform: scaleX(-1); /* لقلب السهم */
+        transform: scaleX(-1);
     }
 
     html[dir="rtl"] .navmenu .dropdown .dropdown ul {
-        /* القائمة المنسدلة الفرعية (sub-dropdown) */
         left: auto;
-        right: -90%; /* نقلها لليسار بالنسبة للعنصر الأب */
+        right: -90%;
     }
 
     html[dir="rtl"] .navmenu .dropdown .dropdown:hover>ul {
         left: auto;
-        right: -100%; /* عند التحويم، نقلها لليسار */
+        right: -100%;
     }
 }
 
-/* Navmenu - Mobile */
 @media (max-width: 1199px) {
     html[dir="rtl"] .mobile-nav-toggle {
-        /* زر القائمة في وضع الجوال */
-        margin-right: 0; /* إلغاء margin-right */
-        margin-left: 10px; /* إضافة margin-left */
+        margin-right: 0;
+        margin-left: 10px;
     }
 
     html[dir="rtl"] .navmenu ul {
-        /* موقع قائمة الجوال */
-        inset: 60px 20px 20px 20px; /* سيعكس inset تلقائياً بسبب dir="rtl" */
-        /* يمكن تحديدها بـ right: 20px; left: auto; width: calc(100% - 40px); */
+        inset: 60px 20px 20px 20px;
     }
 
     html[dir="rtl"] .navmenu a i,
     html[dir="rtl"] .navmenu a:focus i {
-        /* أيقونة القائمة المنسدلة في الجوال (الدائرة) */
         margin-left: 0;
         margin-right: 5px;
-        /* لا حاجة لـ transform: scaleX(-1) هنا لأنها أيقونة دائرية وليست سهم */
     }
 
     html[dir="rtl"] .navmenu .active i,
     html[dir="rtl"] .navmenu .active:focus i {
-        transform: rotate(-180deg); /* عكس اتجاه الدوران ليتناسب مع RTL */
+        transform: rotate(-180deg);
     }
 
     html[dir="rtl"] .mobile-nav-active .mobile-nav-toggle {
-        /* موقع زر إغلاق قائمة الجوال */
         right: auto;
-        left: 15px; /* نقله لليسار */
+        left: 15px;
         margin-left: 0;
     }
 }
 
-/* -----------------------------------------------------------
-   الـ Footer (تذييل الصفحة)
-   ----------------------------------------------------------- */
+/* Footer */
 html[dir="rtl"] .footer .social-links a {
-    /* محاذاة أيقونات التواصل الاجتماعي */
-    margin: 0 4px; /* تحافظ على الهوامش المتساوية */
+    margin: 0 4px;
 }
 
 html[dir="rtl"] .footer .copyright,
 html[dir="rtl"] .footer .credits {
-    text-align: center; /* تظل في المنتصف */
+    text-align: center;
 }
 
-/* -----------------------------------------------------------
-   Scroll Top Button (زر العودة للأعلى)
-   ----------------------------------------------------------- */
+/* Scroll Top Button */
 html[dir="rtl"] .scroll-top {
     right: auto;
-    left: 15px; /* نقله لليسار */
+    left: 15px;
 }
 
-/* -----------------------------------------------------------
-   Global Page Titles & Breadcrumbs (عنوان الصفحة ومسار التنقل)
-   ----------------------------------------------------------- */
+/* Page Titles & Breadcrumbs */
 html[dir="rtl"] .page-title .breadcrumbs ol li+li {
     padding-left: 0;
-    padding-right: 10px; /* عكس اتجاه المسافة بين العناصر */
+    padding-right: 10px;
 }
 
 html[dir="rtl"] .page-title .breadcrumbs ol li+li::before {
     content: "/";
     display: inline-block;
     padding-right: 0;
-    padding-left: 10px; /* عكس اتجاه السلاش ومسافته */
+    padding-left: 10px;
 }
 
-/* -----------------------------------------------------------
-   Hero Section (القسم العلوي الرئيسي)
-   ----------------------------------------------------------- */
+/* Hero Section */
 html[dir="rtl"] .hero h2,
 html[dir="rtl"] .hero p {
-    text-align: right; /* محاذاة النصوص لليمين */
+    text-align: right;
 }
 
 html[dir="rtl"] .hero .download-btn {
-    /* أزرار التحميل */
-    flex-direction: row-reverse; /* لعكس ترتيب الأيقونة والنص */
+    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .hero .download-btn i {
     margin-right: 0;
-    margin-left: 8px; /* مسافة بين الأيقونة والنص */
+    margin-left: 8px;
 }
 
 html[dir="rtl"] .hero .download-btn+.download-btn {
     margin-left: 0;
-    margin-right: 20px; /* عكس المسافة بين الأزرار */
+    margin-right: 20px;
 }
 
 html[dir="rtl"] .hero .hero-img .phone-1 {
     left: auto;
-    right: 0; /* نقل الصورة لليمين */
+    right: 0;
 }
 
 html[dir="rtl"] .hero .hero-img .phone-2 {
     left: auto;
-    right: 0; /* نقل الصورة لليمين */
+    right: 0;
     margin-left: 0;
-    margin-right: 100px; /* عكس الهامش */
+    margin-right: 100px;
 }
 
 @media screen and (max-width: 992px) {
     html[dir="rtl"] .hero .hero-img .phone-1,
     html[dir="rtl"] .hero .hero-img .phone-2 {
-        left: 50%; /* تظل في المنتصف أفقياً */
-        transform: translateX(-50%); /* تظل في المنتصف أفقياً */
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
-/* -----------------------------------------------------------
-   About Section (من نحن)
-   ----------------------------------------------------------- */
+/* About Section */
 html[dir="rtl"] .about .content h3,
 html[dir="rtl"] .about .content h2,
 html[dir="rtl"] .about .content p {
-    text-align: right; /* محاذاة النص لليمين */
+    text-align: right;
 }
 
 html[dir="rtl"] .about .content .read-more {
-    /* زر "اقرأ المزيد" */
-    flex-direction: row-reverse; /* لعكس ترتيب الأيقونة والنص */
-    /* إذا كان `display: inline-flex` أو `flex` وتم تطبيقه،
-       يمكن استخدام `justify-content: flex-end;` */
+    flex-direction: row-reverse;
     justify-content: flex-end;
 }
 
 html[dir="rtl"] .about .content .read-more i {
     margin-left: 0;
-    margin-right: 5px; /* مسافة بين النص والسهم */
-    transform: scaleX(-1); /* لقلب السهم */
+    margin-right: 5px;
+    transform: scaleX(-1);
 }
 
 html[dir="rtl"] .about .content .read-more:hover {
-    padding-right: 24px; /* إعادة ضبط الهامش الأصلي */
-    padding-left: 19px; /* عكس الهامش عند التحويم */
+    padding-right: 24px;
+    padding-left: 19px;
 }
 
 html[dir="rtl"] .about .content .read-more:hover i {
     margin-left: 0;
-    margin-right: 10px; /* عكس الهامش عند التحويم */
+    margin-right: 10px;
 }
 
 html[dir="rtl"] .about .icon-box {
-    text-align: right; /* محاذاة النص في الصناديق */
+    text-align: right;
 }
 
 html[dir="rtl"] .about .icon-box i {
     margin-bottom: 24px;
     margin-right: 0;
-    margin-left: auto; /* لجعل الأيقونة تظهر على اليمين */
-    display: block; /* لجعلها تأخذ سطرًا كاملاً للتأثير على النص */
+    margin-left: auto;
+    display: block;
 }
-/* إذا كانت الأيقونات في about تطفو لليسار، يجب تعديلها: */
-/*
-html[dir="rtl"] .about .icon-box i {
-    float: right;
-    margin-right: 0;
-    margin-left: 15px;
-}
-*/
 
-/* -----------------------------------------------------------
-   Featured Section (الميزات البارزة)
-   ----------------------------------------------------------- */
+/* Featured Section */
 html[dir="rtl"] .featured .card {
-    text-align: right; /* محاذاة النص في البطاقات لليمين */
+    text-align: right;
 }
 
 html[dir="rtl"] .featured .card .icon {
     left: auto;
-    right: calc(50% - 32px); /* نقل الأيقونة لمنتصف اليمين */
+    right: calc(50% - 32px);
 }
 
-/* -----------------------------------------------------------
-   Cards Section (الخطوات)
-   ----------------------------------------------------------- */
+/* Cards Section */
 html[dir="rtl"] .cards .card-item {
-    text-align: right; /* محاذاة النص في عناصر البطاقات لليمين */
+    text-align: right;
 }
 
 html[dir="rtl"] .cards .card-item span {
-    /* الرقم التسلسلي للخطوة */
-    float: right; /* لجعله يطفو لليمين */
+    float: right;
     margin-right: 0;
-    margin-left: 15px; /* مسافة على اليسار */
+    margin-left: 15px;
 }
 
-/* -----------------------------------------------------------
-   Features Section (الميزات)
-   ----------------------------------------------------------- */
+/* Features Section */
 html[dir="rtl"] .features .features-item h3,
 html[dir="rtl"] .features .features-item p {
-    text-align: right; /* محاذاة النصوص لليمين */
+    text-align: right;
 }
 
 html[dir="rtl"] .features .features-item ul {
     padding-right: 0;
     padding-left: 0;
-    text-align: right; /* محاذاة القائمة لليمين */
+    text-align: right;
 }
 
 html[dir="rtl"] .features .features-item ul li {
-    flex-direction: row-reverse; /* لعكس ترتيب الأيقونة والنص */
-    justify-content: flex-end; /* لمحاذاة النص والأيقونة لليمين */
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 html[dir="rtl"] .features .features-item ul i {
     padding-right: 0;
-    padding-left: 4px; /* مسافة بعد الأيقونة */
-    transform: scaleX(-1); /* لقلب الأيقونة إذا كانت سهمًا مثلاً */
+    padding-left: 4px;
+    transform: scaleX(-1);
 }
 
-/* -----------------------------------------------------------
-   Testimonials Section (الشهادات)
-   ----------------------------------------------------------- */
+/* Testimonials Section */
 html[dir="rtl"] .testimonials .testimonial-item .quote-icon-left {
     left: auto;
-    right: -5px; /* نقل علامة الاقتباس اليسرى لليمين */
-    transform: scaleX(-1); /* قلب علامة الاقتباس */
+    right: -5px;
+    transform: scaleX(-1);
 }
 
 html[dir="rtl"] .testimonials .testimonial-item .quote-icon-right {
     right: auto;
-    left: -5px; /* نقل علامة الاقتباس اليمنى لليسار */
-    transform: scaleX(-1) rotateY(180deg); /* قلب علامة الاقتباس وإعادة توجيهها */
-    /* قد تحتاج لتعديل transform هنا بناءً على الأيقونة الدقيقة */
+    left: -5px;
+    transform: scaleX(-1) rotateY(180deg);
 }
 
-/* -----------------------------------------------------------
-   Faq Section (الأسئلة الشائعة)
-   ----------------------------------------------------------- */
+/* FAQ Section */
 html[dir="rtl"] .faq .faq-container .faq-item h3 {
-    margin: 0 0 0 30px; /* عكس الهامش لجعل المساحة على اليسار */
+    margin: 0 0 0 30px;
     text-align: right;
-    flex-direction: row-reverse; /* لعكس ترتيب الرقم والنص */
-    justify-content: flex-end; /* لمحاذاة الرقم والنص لليمين */
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 html[dir="rtl"] .faq .faq-container .faq-item h3 .num {
     padding-right: 0;
-    padding-left: 5px; /* مسافة بعد الرقم */
+    padding-left: 5px;
 }
 
 html[dir="rtl"] .faq .faq-container .faq-item .faq-toggle {
     right: auto;
-    left: 20px; /* نقل زر التبديل لليسار */
-    transform: rotate(0deg); /* التأكد من عدم وجود دوران افتراضي */
+    left: 20px;
+    transform: rotate(0deg);
 }
 
 html[dir="rtl"] .faq .faq-container .faq-active .faq-toggle {
-    transform: rotate(-90deg); /* دوران لأسفل في RTL عند الفتح */
+    transform: rotate(-90deg);
 }
 
-/* -----------------------------------------------------------
-   Contact Section (اتصل بنا)
-   ----------------------------------------------------------- */
+/* Contact Section */
 html[dir="rtl"] .contact .info-item {
-    text-align: right; /* محاذاة النص لليمين */
+    text-align: right;
 }
 
 html[dir="rtl"] .contact .info-item i {
     margin-right: 0;
-    margin-left: 15px; /* مسافة بين الأيقونة والنص */
+    margin-left: 15px;
 }
 
 html[dir="rtl"] .contact .php-email-form input,
 html[dir="rtl"] .contact .php-email-form textarea {
-    text-align: right; /* محاذاة النص داخل حقول الإدخال */
+    text-align: right;
 }
 
 html[dir="rtl"] .contact .php-email-form input[type=text]::placeholder,
 html[dir="rtl"] .contact .php-email-form input[type=email]::placeholder,
 html[dir="rtl"] .contact .php-email-form textarea::placeholder {
-    text-align: right; /* محاذاة Placeholder */
+    text-align: right;
 }
 
-
-/* -----------------------------------------------------------
-   تعديلات خاصة بالخطوط للغة العربية
-   ----------------------------------------------------------- */
-/* يمكنك إضافة خط عربي (مثل Noto Kufi Arabic, Cairo, Almarai) هنا
-   وتطبيقه على body أو على heading-font/nav-font */
+/* Arabic Fonts (optional) */
+/*
 html[dir="rtl"] body {
-    /*font-family: 'Cairo', var(--default-font); */
+    font-family: 'Cairo', var(--default-font);
 }
 
 html[dir="rtl"] h1,
@@ -387,16 +319,10 @@ html[dir="rtl"] h3,
 html[dir="rtl"] h4,
 html[dir="rtl"] h5,
 html[dir="rtl"] h6 {
-    /*font-family: 'Cairo', var(--heading-font); */
+    font-family: 'Cairo', var(--heading-font);
 }
 
 html[dir="rtl"] .navmenu a {
-    /*font-family: 'Cairo', var(--nav-font); */
+    font-family: 'Cairo', var(--nav-font);
 }
-
-/* -----------------------------------------------------------
-   تأثيرات CSS أخرى (مثل الظلال أو الحدود)
-   ----------------------------------------------------------- */
-/* إذا كانت هناك أي ظلال (box-shadow) أو حدود (border) تعتمد على الاتجاه،
-   قد تحتاج لتعديلها هنا. على سبيل المثال، إذا كان هناك ظل جهة اليسار،
-   اجعله جهة اليمين. */
+*/
