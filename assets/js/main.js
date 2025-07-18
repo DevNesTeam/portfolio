@@ -9,26 +9,34 @@
 (function() {
   "use strict";
 
-  // --- Mobile Nav Toggle (تم وضعه في البداية لضمان عمله) ---
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+
+ /**
+   * Mobile nav toggle
+   */
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle'); // هذا السطر بيحاول يلاقي الزر
 
   function mobileNavToogle() {
+    // هذا السطر ببدّل الكلاس "mobile-nav-active" على الـ body لفتح/إغلاق القائمة
     document.querySelector('body').classList.toggle('mobile-nav-active');
+    // وهاد بغير أيقونة الزر بين الهامبرغر و X
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
 
-  // مستمع الحدث الخاص بالزر الرئيسي لفتح/إغلاق القائمة
-  if (mobileNavToggleBtn) { // تأكد من أن الزر موجود
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-  }
-  // --- نهاية Mobile Nav Toggle ---
+  // هذا السطر مهم جداً، بيضيف مستمع حدث (Event Listener) لزر التنقل
+  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
+  // ... (باقي أكواد القالب) ...
 
-  // --- Translation Variables & Functions ---
+})();
+
+  
+  // --- Translation Variables & Functions (moved to top for better scope) ---
   const translations = {};
   let currentLang = '';
 
+  // المسار الأساسي لملفات الترجمة بالنسبة لملف HTML الرئيسي (index.html)
+  // تأكد أن مجلد 'translations' موجود في نفس مستوى ملف HTML الرئيسي
   const TRANSLATIONS_BASE_PATH = './translations/';
 
   async function loadTranslations(lang) {
@@ -43,11 +51,12 @@
       console.error(`Error loading translations for ${lang}:`, error);
       if (lang !== 'en' && Object.keys(translations).length === 0) {
         console.warn('Falling back to English as default due to translation load failure.');
-        setLanguage('en'); 
+        setLanguage('en');
       }
     }
   }
 
+  // دالة لتغيير لغة الموقع (متاحة عالمياً)
   window.setLanguage = async (lang) => {
     localStorage.setItem('language', lang);
     currentLang = lang;
@@ -56,6 +65,7 @@
       await loadTranslations(lang);
     }
 
+    // تطبيق الترجمات على جميع العناصر التي تحمل data-translate-key
     document.querySelectorAll('[data-translate-key]').forEach(element => {
       const key = element.getAttribute('data-translate-key');
       if (translations[lang] && translations[lang][key]) {
@@ -69,14 +79,16 @@
       }
     });
 
+    // التعامل مع اتجاه النص (RTL/LTR) وتحميل/إزالة ملف CSS الخاص بـ RTL
     if (lang === 'ar') {
       document.documentElement.setAttribute('dir', 'rtl');
       document.documentElement.setAttribute('lang', 'ar');
 
       let rtlLink = document.getElementById('rtl-style');
-      if (!rtlLink) { 
+      if (!rtlLink) { // إذا لم يكن ملف الـ RTL CSS محملاً، قم بتحميله
         rtlLink = document.createElement('link');
         rtlLink.rel = 'stylesheet';
+        // المسار هنا يكون نسبةً لملف HTML الرئيسي (index.html)
         rtlLink.href = 'assets/css/main-rtl.css';
         rtlLink.id = 'rtl-style';
         document.head.appendChild(rtlLink);
@@ -87,12 +99,13 @@
       document.documentElement.setAttribute('lang', lang);
 
       const rtlLink = document.getElementById('rtl-style');
-      if (rtlLink) { 
+      if (rtlLink) { // إذا كان ملف الـ RTL CSS محملاً، قم بإزالته
         rtlLink.remove();
         console.log('RTL stylesheet removed.');
       }
     }
 
+    // تحديث النص المعروض لزر اختيار اللغة في القائمة المنسدلة
     const currentLangDisplay = document.getElementById('current-language-display');
     if (currentLangDisplay) {
         const dropdownKey = currentLangDisplay.getAttribute('data-translate-key');
@@ -103,7 +116,8 @@
         }
     }
   };
-  // --- نهاية أكواد الترجمة ---
+
+  // --- End Translation Variables & Functions ---
 
 
   /**
@@ -118,36 +132,42 @@
 
   document.addEventListener('scroll', toggleScrolled);
   window.addEventListener('load', toggleScrolled);
-  
+
   /**
-   * Toggle mobile nav dropdowns (مهم جداً: إيقاف انتشار الحدث لضمان عمل القوائم المنسدلة)
+   * Mobile nav toggle
+   */
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+
+  function mobileNavToogle() {
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
+  }
+  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+
+  /**
+   * Hide mobile nav on same-page/hash links
+   */
+  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+    navmenu.addEventListener('click', () => {
+      if (document.querySelector('.mobile-nav-active')) {
+        mobileNavToogle();
+      }
+    });
+
+  });
+
+  /**
+   * Toggle mobile nav dropdowns
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
     navmenu.addEventListener('click', function(e) {
       e.preventDefault();
-      // هذا السطر يمنع النقر من الوصول إلى الروابط الأبوية، مما يمنع إغلاق القائمة الرئيسية.
-      e.stopImmediatePropagation(); 
       this.parentNode.classList.toggle('active');
       this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      e.stopImmediatePropagation();
     });
   });
-
-  /**
-   * Hide mobile nav on same-page/hash links (تم تبسيطه لعدم التعارض)
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      // إذا كانت القائمة المنسدلة الأبوية ليست نشطة (أي أنك نقرت على رابط عادي)
-      // أو إذا كنت نقرت على رابط هاش (#) داخل قائمة منسدلة
-      // قم بإغلاق قائمة الموبايل.
-      const isInsideActiveDropdown = this.closest('.dropdown.active');
-      
-      if (document.querySelector('.mobile-nav-active') && (!isInsideActiveDropdown || this.hash)) {
-        mobileNavToogle();
-      }
-    });
-  });
-
 
   /**
    * Preloader
@@ -191,6 +211,8 @@
       mirror: false
     });
   }
+  // Changed from window.addEventListener('load', aosInit);
+  // aosInit will be called by initializeLanguage() to ensure it runs after language is set.
 
   /**
    * Init swiper sliders
@@ -201,16 +223,19 @@
         swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
 
-      // ملاحظة: إذا لم تكن الدالة 'initSwiperWithCustomPagination' معرفة في مكان ما،
-      // فقد يتسبب هذا السطر في خطأ. تأكد من وجودها أو أزل هذا الشرط.
       if (swiperElement.classList.contains("swiper-tab")) {
-        // initSwiperWithCustomPagination(swiperElement, config); // إذا لم تكن موجودة، قم بتعطيل هذا السطر
-        new Swiper(swiperElement, config); // أو استخدم هذا السطر مباشرة
+        // Assuming initSwiperWithCustomPagination is defined elsewhere or not used if not present
+        // If it's not defined, this line will cause an error.
+        // Make sure it's part of your project or remove this conditional.
+        // For now, I'll keep it as per your original code.
+        initSwiperWithCustomPagination(swiperElement, config);
       } else {
         new Swiper(swiperElement, config);
       }
     });
   }
+  // Changed from window.addEventListener("load", initSwiper);
+  // initSwiper will be called by initializeLanguage() to ensure it runs after language is set.
 
   /**
    * Initiate glightbox
@@ -220,16 +245,33 @@
   });
 
   /**
-   * Frequently Asked Questions Toggle
+   * Frequently Asked Questions Toggle (Re-adjusted to use the correct selector and event)
    */
   document.querySelectorAll('.faq-item h3').forEach((faqItemHeading) => {
+    // The original code was attaching to h3 AND .faq-toggle.
+    // If h3 itself is clickable and contains the .faq-toggle, this is fine.
+    // However, it's safer to attach to the toggle if it's a separate element.
+    // Given your original CSS had `cursor: pointer` on both, I'll assume h3 is the main click area.
     faqItemHeading.addEventListener('click', () => {
+      // Find the closest parent with class 'faq-item'
       const parentFaqItem = faqItemHeading.closest('.faq-item');
       if (parentFaqItem) {
         parentFaqItem.classList.toggle('faq-active');
       }
     });
   });
+
+  // If .faq-toggle is a separate clickable element and not nested in h3,
+  // then you should explicitly add an event listener to it as well:
+  // document.querySelectorAll('.faq-item .faq-toggle').forEach((faqToggle) => {
+  //   faqToggle.addEventListener('click', () => {
+  //     const parentFaqItem = faqToggle.closest('.faq-item');
+  //     if (parentFaqItem) {
+  //       parentFaqItem.classList.toggle('faq-active');
+  //     }
+  //   });
+  // });
+
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
@@ -274,13 +316,15 @@
   // --- Initialize Language and related components on DOMContentLoaded ---
   document.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('language');
-    const langToUse = savedLang || 'en'; 
+    const langToUse = savedLang || 'en'; // الإنجليزية هي الافتراضية إذا لم يتم حفظ لغة
 
+    // Apply initial language settings including RTL CSS
     await setLanguage(langToUse);
 
-    // تهيئة المكونات بعد تعيين اللغة
+    // Now that language is set (and RTL CSS loaded if needed),
+    // initialize components that might be affected by language/direction
     aosInit();
     initSwiper();
+    // Any other initializations that should happen after language is set
   });
 
-})();
