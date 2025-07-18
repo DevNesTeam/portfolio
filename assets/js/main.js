@@ -11,7 +11,7 @@
 
   const translations = {};
   let currentLang = '';
-
+ const isGithub = location.hostname.includes('github.io');
  const TRANSLATIONS_BASE_PATH = isGithub 
     ? '/portfolio/translations/' 
     : './translations/';
