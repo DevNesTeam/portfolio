@@ -14,9 +14,8 @@
 
 const isGithub = location.hostname.includes('github.io');
 const TRANSLATIONS_BASE_PATH = isGithub 
-  ? '/portfolio/translations/' 
+  ? '../../translations/'
   : './translations/';
-
 
   async function loadTranslations(lang) {
     try {
