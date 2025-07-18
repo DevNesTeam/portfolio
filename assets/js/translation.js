@@ -6,8 +6,10 @@
 
   // Path to translation files, relative to the HTML files using it.
   // Assuming HTML files are in 'app-details/' and 'translations' is in the project root.
-const TRANSLATIONS_BASE_PATH = '/portfolio/translations/';
 
+ const TRANSLATIONS_BASE_PATH = isGithub 
+    ? '/portfolio/translations/' 
+    : './translations/';
 
   // Function to load translation JSON files
   async function loadTranslations(lang) {

@@ -12,7 +12,9 @@
   const translations = {};
   let currentLang = '';
 
-  const TRANSLATIONS_BASE_PATH = './translations/';
+ const TRANSLATIONS_BASE_PATH = isGithub 
+    ? '/portfolio/translations/' 
+    : './translations/';
 
   async function loadTranslations(lang) {
     try {
