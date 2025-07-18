@@ -1088,6 +1088,23 @@ section,
     border-radius: 25px;
     transition: none;
   }
+
+.gallery .swiper-slide {
+  transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: none;
+}
+
+.gallery .swiper-slide.is-centered {
+  background: var(--background-color);
+  border: 4px solid var(--accent-color);
+  transform: scale(1.05);
+  border-radius: 25px;
+  z-index: 10;
+  box-shadow: 0 0 0 3px var(--accent-color);
+}
+
+
+
 }
 
 /*--------------------------------------------------------------
