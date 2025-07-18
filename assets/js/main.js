@@ -9,12 +9,25 @@
 (function() {
   "use strict";
 
-  // --- Translation Variables & Functions (موجودة هنا حسب طلبك) ---
+  // --- Mobile Nav Toggle (تم التأكيد على مكانه لضمان الأولوية) ---
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+
+  function mobileNavToogle() {
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
+  }
+  // مستمع الحدث الخاص بالزر الرئيسي لفتح/إغلاق القائمة
+  if (mobileNavToggleBtn) { // تأكد من أن الزر موجود
+    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  }
+  // --- نهاية Mobile Nav Toggle ---
+
+
+  // --- Translation Variables & Functions ---
   const translations = {};
   let currentLang = '';
 
-  // المسار الأساسي لملفات الترجمة بالنسبة لملف HTML الرئيسي (index.html)
-  // تأكد أن مجلد 'translations' موجود في نفس مستوى ملف HTML الرئيسي
   const TRANSLATIONS_BASE_PATH = './translations/';
 
   async function loadTranslations(lang) {
@@ -29,13 +42,11 @@
       console.error(`Error loading translations for ${lang}:`, error);
       if (lang !== 'en' && Object.keys(translations).length === 0) {
         console.warn('Falling back to English as default due to translation load failure.');
-        // استدعاء setLanguage مباشرةً هنا لأنها في نفس النطاق
         setLanguage('en'); 
       }
     }
   }
 
-  // دالة لتغيير لغة الموقع (متاحة عالمياً)
   window.setLanguage = async (lang) => {
     localStorage.setItem('language', lang);
     currentLang = lang;
@@ -44,7 +55,6 @@
       await loadTranslations(lang);
     }
 
-    // تطبيق الترجمات على جميع العناصر التي تحمل data-translate-key
     document.querySelectorAll('[data-translate-key]').forEach(element => {
       const key = element.getAttribute('data-translate-key');
       if (translations[lang] && translations[lang][key]) {
@@ -58,16 +68,14 @@
       }
     });
 
-    // التعامل مع اتجاه النص (RTL/LTR) وتحميل/إزالة ملف CSS الخاص بـ RTL
     if (lang === 'ar') {
       document.documentElement.setAttribute('dir', 'rtl');
       document.documentElement.setAttribute('lang', 'ar');
 
       let rtlLink = document.getElementById('rtl-style');
-      if (!rtlLink) { // إذا لم يكن ملف الـ RTL CSS محملاً، قم بتحميله
+      if (!rtlLink) { 
         rtlLink = document.createElement('link');
         rtlLink.rel = 'stylesheet';
-        // المسار هنا يكون نسبةً لملف HTML الرئيسي (index.html)
         rtlLink.href = 'assets/css/main-rtl.css';
         rtlLink.id = 'rtl-style';
         document.head.appendChild(rtlLink);
@@ -78,13 +86,12 @@
       document.documentElement.setAttribute('lang', lang);
 
       const rtlLink = document.getElementById('rtl-style');
-      if (rtlLink) { // إذا كان ملف الـ RTL CSS محملاً، قم بإزالته
+      if (rtlLink) { 
         rtlLink.remove();
         console.log('RTL stylesheet removed.');
       }
     }
 
-    // تحديث النص المعروض لزر اختيار اللغة في القائمة المنسدلة
     const currentLangDisplay = document.getElementById('current-language-display');
     if (currentLangDisplay) {
         const dropdownKey = currentLangDisplay.getAttribute('data-translate-key');
@@ -95,7 +102,6 @@
         }
     }
   };
-
   // --- نهاية أكواد الترجمة ---
 
 
@@ -113,38 +119,19 @@
   window.addEventListener('load', toggleScrolled);
 
   /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-
-  /**
    * Hide mobile nav on same-page/hash links and refine dropdown interaction
    * هذا هو التعديل الرئيسي لحل مشكلة قائمة اللغة المنسدلة على الموبايل.
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', function(e) {
-      // التحقق مما إذا كان العنصر الذي تم النقر عليه هو زر تبديل قائمة منسدلة
       const isDropdownToggle = this.classList.contains('toggle-dropdown');
-      // التحقق مما إذا كان العنصر الأب للعنصر الذي تم النقر عليه هو قائمة منسدلة نشطة (مفتوحة)
       const isInsideActiveDropdown = this.closest('.dropdown.active');
 
       if (document.querySelector('.mobile-nav-active')) {
-        // إذا كان العنصر الذي تم النقر عليه هو زر تبديل قائمة منسدلة (مثل سهم اللغة)،
-        // نمنع السلوك الافتراضي للرابط ونوقف انتشار الحدث.
-        // هذا يسمح للقائمة المنسدلة بالفتح/الإغلاق دون إغلاق قائمة التنقل الرئيسية.
         if (isDropdownToggle) {
           e.preventDefault(); 
           e.stopImmediatePropagation(); 
         } 
-        // إذا كان رابطاً عادياً (ليس زر تبديل) AND ليس داخل قائمة منسدلة نشطة (أو هو رابط هاش داخلها)،
-        // عندئذٍ نغلق قائمة التنقل الرئيسية.
         else if (!isInsideActiveDropdown || this.hash) {
           mobileNavToogle();
         }
@@ -206,7 +193,6 @@
       mirror: false
     });
   }
-  // aoinit سيتم استدعاؤها بواسطة initializeLanguage() لضمان تشغيلها بعد تعيين اللغة.
 
   /**
    * Init swiper sliders
@@ -217,16 +203,15 @@
         swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
 
-      // ملاحظة: إذا لم تكن الدالة initSwiperWithCustomPagination معرفة أو مستخدمة،
-      // فقد يتسبب هذا السطر في خطأ. تأكد من وجودها أو أزل هذا الشرط.
       if (swiperElement.classList.contains("swiper-tab")) {
+        // تأكد من أن هذه الدالة 'initSwiperWithCustomPagination' معرفة في مكان ما.
+        // وإلا، قم بإزالة هذا الشرط إذا لم تكن تستخدمها.
         initSwiperWithCustomPagination(swiperElement, config);
       } else {
         new Swiper(swiperElement, config);
       }
     });
   }
-  // initSwiper سيتم استدعاؤها بواسطة initializeLanguage() لضمان تشغيلها بعد تعيين اللغة.
 
   /**
    * Initiate glightbox
@@ -236,7 +221,7 @@
   });
 
   /**
-   * Frequently Asked Questions Toggle (Re-adjusted to use the correct selector and event)
+   * Frequently Asked Questions Toggle
    */
   document.querySelectorAll('.faq-item h3').forEach((faqItemHeading) => {
     faqItemHeading.addEventListener('click', () => {
@@ -290,16 +275,13 @@
   // --- Initialize Language and related components on DOMContentLoaded ---
   document.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('language');
-    const langToUse = savedLang || 'en'; // الإنجليزية هي الافتراضية إذا لم يتم حفظ لغة
+    const langToUse = savedLang || 'en'; 
 
-    // تطبيق إعدادات اللغة الأولية بما في ذلك CSS الخاص بـ RTL
     await setLanguage(langToUse);
 
-    // الآن بعد تعيين اللغة (وتحميل RTL CSS إذا لزم الأمر)،
-    // نقوم بتهيئة المكونات التي قد تتأثر باللغة/الاتجاه
+    // تهيئة المكونات بعد تعيين اللغة
     aosInit();
     initSwiper();
-    // أي تهيئة أخرى يجب أن تحدث بعد تعيين اللغة يمكن إضافتها هنا
   });
 
 })();
