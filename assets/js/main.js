@@ -34,6 +34,17 @@ const TRANSLATIONS_BASE_PATH = isGithub
       }
     }
   }
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownToggle = document.querySelector(".navmenu .dropdown > a.toggle-dropdown");
+
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      const parent = this.parentElement;
+      parent.classList.toggle("open");
+    });
+  }
+});
 
   window.setLanguage = async (lang) => {
     localStorage.setItem('language', lang);
