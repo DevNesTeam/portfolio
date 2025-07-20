@@ -196,6 +196,26 @@ h6 {
     align-items: center;
   }
 
+  /* هذا القسم يجب أن يكون هنا ليعمل بشكل صحيح مع الجافاسكريبت */
+  .navmenu .dropdown ul {
+      display: none; /* إخفاء افتراضي */
+      /* يمكنك استخدام:
+         visibility: hidden;
+         opacity: 0;
+         transition: visibility 0s, opacity 0.3s ease;
+         لتأثيرات إظهار/إخفاء أجمل
+      */
+  }
+
+  /* إظهار القائمة المنسدلة عندما يكون الـ parent (li.dropdown) لديه الفئة 'open' */
+  .navmenu .dropdown.open > ul { /* استخدام > لضمان استهداف الـ ul المباشر */
+      display: block;
+      /* إذا استخدمت visibility/opacity:
+         visibility: visible;
+         opacity: 1;
+      */
+  }
+
   .navmenu li {
     position: relative;
   }
@@ -232,15 +252,16 @@ h6 {
     color: var(--nav-hover-color);
   }
 
+  /* قواعد القائمة المنسدلة نفسها - تبقى كما هي، لكن الإظهار الآن يتم بـ .open */
   .navmenu .dropdown ul {
     margin: 0;
     padding: 10px 0;
     background: var(--nav-dropdown-background-color);
-    display: block;
+    /* display: block; -- تم تغييرها بواسطة .open */
     position: absolute;
-    visibility: hidden;
+    /* visibility: hidden; -- تم تغييرها بواسطة .open */
     left: 14px;
-    top: 130%;
+    top: 130%; /* يجب أن يعتمد هذا على تصميمك، غالباً يكون 100% أو أقل بقليل */
     opacity: 0;
     transition: 0.3s;
     border-radius: 4px;
@@ -269,24 +290,35 @@ h6 {
     color: var(--nav-dropdown-hover-color);
   }
 
-  .navmenu .dropdown:hover>ul {
+  /* ** إزالة هذا القسم لتجنب التضارب مع JavaScript الذي يستخدم .open ** */
+  /* .navmenu .dropdown:hover>ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
+  } */
+
+  /* هذه القاعدة تعيد إظهار القائمة المنسدلة عند استخدام .open */
+  .navmenu .dropdown.open > ul {
+      opacity: 1;
+      top: 100%; /* يجب أن يكون هذا متوافقًا مع الـ top في الـ ul نفسه */
+      visibility: visible;
   }
+
 
   .navmenu .dropdown .dropdown ul {
     top: 0;
     left: -90%;
-    visibility: hidden;
+    /* visibility: hidden; -- يتم التحكم فيها بـ .open */
   }
 
-  .navmenu .dropdown .dropdown:hover>ul {
+  /* ** إزالة هذا القسم لتجنب التضارب ** */
+  /* .navmenu .dropdown .dropdown:hover>ul {
     opacity: 1;
     top: 0;
     left: -100%;
     visibility: visible;
-  }
+  } */
+  /* يجب أن يكون هناك قاعدة .dropdown.open > ul للـ sub-dropdowns أيضاً إذا كانت موجودة */
 }
 
 /* Navmenu - Mobile */
@@ -368,9 +400,11 @@ h6 {
     transform: rotate(180deg);
   }
 
-  .navmenu .dropdown ul {
-    position: static;
-    display: none;
+  /* ** تعديل هنا: كيفية إظهار القائمة المنسدلة للغة على الموبايل ** */
+  /* يجب أن يتم التحكم في إظهارها بواسطة فئة 'open' على الـ parent 'dropdown' */
+  .navmenu .dropdown ul { /* هذه هي القائمة المنسدلة للغة */
+    position: static; /* مهم جداً للموبايل لتبقى ضمن التدفق */
+    display: none; /* افتراضياً مخفية */
     z-index: 99;
     padding: 10px 0;
     margin: 10px 20px;
@@ -380,14 +414,23 @@ h6 {
     transition: all 0.5s ease-in-out;
   }
 
+  /* ** القاعدة الأساسية لإظهار قائمة اللغة المنسدلة على الموبايل ** */
+  .navmenu .dropdown.open > ul {
+      display: block; /* إظهار القائمة عند وجود فئة 'open' */
+  }
+
   .navmenu .dropdown ul ul {
     background-color: rgba(33, 37, 41, 0.1);
   }
 
-  .navmenu .dropdown>.dropdown-active {
+  /* ** إزالة أو تعديل هذه القاعدة: ** */
+  /* إذا كنت تريد إظهارها عندما يكون الـ parent لديه الفئة 'active' وليس 'open' */
+  /* بما أننا نستخدم 'open' في JS، يمكن دمج هذه القاعدة مع .dropdown.open > ul */
+  /* .navmenu .dropdown>.dropdown-active {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
-  }
+  } */
+
 
   .mobile-nav-active {
     overflow: hidden;
@@ -415,7 +458,6 @@ h6 {
     display: block;
   }
 }
-
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/

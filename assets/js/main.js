@@ -34,18 +34,52 @@
       }
     }
   }
+
+  // --- معالجة الأحداث عند تحميل DOM ---
   document.addEventListener("DOMContentLoaded", function () {
+    // 1. معالجة النقر على زر تبديل القائمة المنسدلة (مثلاً "Language" مع السهم)
     const dropdownToggle = document.querySelector(".navmenu .dropdown > a.toggle-dropdown");
 
     if (dropdownToggle) {
       dropdownToggle.addEventListener("click", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // منع السلوك الافتراضي للرابط (#)
         const parent = this.parentElement;
-        parent.classList.toggle("open");
+        parent.classList.toggle("open"); // تبديل فئة 'open' لفتح/إغلاق القائمة المنسدلة
+        e.stopImmediatePropagation(); // الأهم: منع انتشار الحدث لمنع التضارب مع مستمعات أخرى
       });
     }
-  });
 
+    // 2. معالجة النقر على عناصر اللغة داخل القائمة المنسدلة
+    document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault(); // منع السلوك الافتراضي للرابط (#)
+        const lang = this.getAttribute('data-lang'); // الحصول على رمز اللغة من data-lang
+        window.setLanguage(lang); // تعيين اللغة عبر الوظيفة العامة
+
+        // إغلاق القائمة المنسدلة (الخاصة باللغة) بعد اختيار اللغة
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.remove('open');
+        }
+
+        // إغلاق قائمة التنقل للموبايل إذا كانت مفتوحة (قائمة الهامبرغر)
+        if (document.querySelector('body').classList.contains('mobile-nav-active')) {
+          mobileNavToogle(); // استدعاء وظيفة إغلاق قائمة الموبايل
+        }
+      });
+    });
+
+    // 3. التهيئة الأولية للغة عند تحميل الصفحة
+    const savedLang = localStorage.getItem('language');
+    const langToUse = savedLang || 'en';
+    window.setLanguage(langToUse).then(() => {
+        aosInit(); // تهيئة AOS بعد تحميل اللغة
+    });
+  });
+  // --- نهاية معالجة الأحداث عند تحميل DOM ---
+
+
+  // --- وظيفة تعيين اللغة ---
   window.setLanguage = async (lang) => {
     localStorage.setItem('language', lang);
     currentLang = lang;
@@ -75,7 +109,7 @@
       if (!rtlLink) {
         rtlLink = document.createElement('link');
         rtlLink.rel = 'stylesheet';
-        rtlLink.href = 'assets/css/main-rtl.css';
+        rtlLink.href = 'assets/css/main-rtl.css'; // تأكد من المسار الصحيح لملف RTL CSS
         rtlLink.id = 'rtl-style';
         document.head.appendChild(rtlLink);
         console.log('RTL stylesheet added.');
@@ -91,6 +125,7 @@
       }
     }
 
+    // تحديث عرض اللغة الحالية في القائمة المنسدلة (إذا وجدت)
     const currentLangDisplay = document.getElementById('current-language-display');
     if (currentLangDisplay) {
       const dropdownKey = currentLangDisplay.getAttribute('data-translate-key');
@@ -101,8 +136,13 @@
       }
     }
 
+    // إعادة تهيئة Swiper إذا كان موجودًا ويتأثر باتجاه النص
     initSwiper();
   };
+  // --- نهاية وظيفة تعيين اللغة ---
+
+
+  // --- وظائف عامة أخرى ---
 
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
@@ -123,20 +163,15 @@
   }
   mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+  // ** هذا هو التعديل الأساسي لمعالجة قائمة الموبايل: **
+  // يستمع للنقرات على روابط التنقل الرئيسية ويغلق قائمة الموبايل،
+  // لكنه يستثني عناصر قائمة اللغة المنسدلة لتجنب التضارب.
+  document.querySelectorAll('#navmenu a:not(.dropdown-item)').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
+      // فقط أغلق قائمة الموبايل إذا كانت مفتوحة
+      if (document.querySelector('body').classList.contains('mobile-nav-active')) {
         mobileNavToogle();
       }
-    });
-  });
-
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function (e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
     });
   });
 
@@ -248,15 +283,6 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
-
-  document.addEventListener('DOMContentLoaded', async () => {
-    const savedLang = localStorage.getItem('language');
-    const langToUse = savedLang || 'en';
-
-    await window.setLanguage(langToUse);
-
-    aosInit();
-  });
 
   document.querySelectorAll('.view-details-btn').forEach(button => {
     button.addEventListener('click', function (e) {
