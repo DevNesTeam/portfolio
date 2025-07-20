@@ -195,15 +195,36 @@ html[dir="rtl"] .about .content .read-more:hover i {
     margin-right: 10px;
 }
 
-html[dir="rtl"] .about .icon-box {
-    text-align: right;
-}
+
 
 html[dir="rtl"] .about .icon-box i {
-    margin-bottom: 24px;
-    margin-right: 0;
-    margin-left: auto;
-    display: block;
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%; 
+    margin-bottom: 24px; 
+
+
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+
+
+    margin-right: auto; 
+    margin-left: auto;  
+
+
+
+    font-size: 32px;
+    line-height: 0;
+    transition: all 0.4s ease-out 0s;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
+    color: var(--accent-color);
+}
+
+
+html[dir="rtl"] .about .icon-box:hover i {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
 }
 
 /* Featured Section */
@@ -307,8 +328,8 @@ html[dir="rtl"] .contact .php-email-form textarea::placeholder {
     text-align: right;
 }
 
-/* Arabic Fonts (optional) */
-/*
+
+
 html[dir="rtl"] body {
     font-family: 'Cairo', var(--default-font);
 }
@@ -325,4 +346,4 @@ html[dir="rtl"] h6 {
 html[dir="rtl"] .navmenu a {
     font-family: 'Cairo', var(--nav-font);
 }
-*/
+
