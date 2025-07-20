@@ -140,5 +140,16 @@ const TRANSLATIONS_BASE_PATH = isGithub
     // 4. Initialize GLightbox here once, as its elements are typically static after load
     window.initGLightbox(); 
   });
+document.querySelectorAll('.swiper-slide img').forEach(img => {
+  img.addEventListener('load', () => {
+    img.classList.add('loaded');
+    // السبينر هو العنصر الشقيق للـ <a> اللي يحتوي الصورة،
+    // لذلك نطلع للوالد (swiper-slide) ونبحث عن السبينر داخله
+    const spinner = img.closest('.swiper-slide').querySelector('.spinner');
+    if (spinner) {
+      spinner.style.display = 'none';
+    }
+  });
+});
 
 })();
