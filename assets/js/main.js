@@ -258,7 +258,19 @@ document.addEventListener("DOMContentLoaded", function () {
     aosInit();
   });
 
+document.querySelectorAll('.view-details-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault(); // تمنع الانتقال الفوري
 
+      // ظهور الـ preloader
+      const preloader = document.getElementById('preloader');
+      preloader.style.display = 'block';
 
+      // بعد 1 ثانية انتقال للصفحة اللي محددها بـ data-target
+      setTimeout(() => {
+        window.location.href = this.getAttribute('data-target');
+      }, 1000);
+    });
+  });
   
 })();
