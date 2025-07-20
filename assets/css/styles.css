@@ -98,9 +98,17 @@ ul.ps-3 li {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive heading */
-@media (max-width: 576px) {
-  .section-title h2 {
-    font-size: 2rem;
+/* For mobile screens, make the gallery image fill the slide width */
+@media (max-width: 767px) {
+  .swiper-slide img {
+    max-width: 100%; /* اجعل الصورة تملأ عرض الشريحة بالكامل */
+    border-radius: 0;  /* اختياري: إزالة الحواف الدائرية لتبدو أفضل على كامل الشاشة */
   }
 }
+/* Move Swiper pagination dots down */
+/* Swiper pagination dots styling */
+    .swiper-pagination {
+      margin-top: 60px !important; /* Move pagination dots down */
+      position: relative !important; /* Ensure it's positioned relative to its normal flow */
+      bottom: auto !important; /* Reset bottom property */
+    }

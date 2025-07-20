@@ -1,4 +1,4 @@
-(function() {
+(function () {
   "use strict";
 
   const translations = {};
@@ -6,10 +6,10 @@
 
   // Path to translation files, relative to the HTML files using it.
   // Assuming HTML files are in 'app-details/' and 'translations' is in the project root.
-const isGithub = location.hostname.includes('github.io');
-const TRANSLATIONS_BASE_PATH = isGithub 
-  ? '/portfolio/translations/' 
-  : '../translations/';
+  const isGithub = location.hostname.includes('github.io');
+  const TRANSLATIONS_BASE_PATH = isGithub ?
+    '/portfolio/translations/' :
+    '../translations/';
 
   // Function to load translation JSON files
   async function loadTranslations(lang) {
@@ -34,7 +34,7 @@ const TRANSLATIONS_BASE_PATH = isGithub
   // This function is made global so it can be called from dropdowns/buttons
   window.setLanguage = async (lang) => {
     // 1. Save the selected language to localStorage
-    localStorage.setItem('language', lang); 
+    localStorage.setItem('language', lang);
     currentLang = lang;
 
     // 2. Load translations if not already loaded
@@ -94,8 +94,8 @@ const TRANSLATIONS_BASE_PATH = isGithub
   };
 
   // Swiper initialization function (made global so setLanguage can call it)
-  window.initSwiper = function() { // Changed to global
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+  window.initSwiper = function () { // Changed to global
+    document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       // Destroy existing Swiper instance before creating a new one
       if (swiperElement.swiper) {
         swiperElement.swiper.destroy(true, true);
@@ -121,7 +121,7 @@ const TRANSLATIONS_BASE_PATH = isGithub
 
   // GLightbox initialization (also ensure it's re-initialized if needed, or done once)
   // Making it global so setLanguage can potentially re-call it if GLightbox elements change dynamically
-  window.initGLightbox = function() {
+  window.initGLightbox = function () {
     GLightbox({
       selector: '.glightbox'
     });
@@ -132,24 +132,24 @@ const TRANSLATIONS_BASE_PATH = isGithub
     // 1. Get saved language from localStorage
     const savedLang = localStorage.getItem('language');
     // 2. Use saved language, or default to 'en' if not found
-    const langToUse = savedLang || 'en'; 
+    const langToUse = savedLang || 'en';
 
     // 3. Apply initial language settings and load translations
     await window.setLanguage(langToUse);
 
     // 4. Initialize GLightbox here once, as its elements are typically static after load
-    window.initGLightbox(); 
+    window.initGLightbox();
   });
-document.querySelectorAll('.swiper-slide img').forEach(img => {
-  img.addEventListener('load', () => {
-    img.classList.add('loaded');
-    // السبينر هو العنصر الشقيق للـ <a> اللي يحتوي الصورة،
-    // لذلك نطلع للوالد (swiper-slide) ونبحث عن السبينر داخله
-    const spinner = img.closest('.swiper-slide').querySelector('.spinner');
-    if (spinner) {
-      spinner.style.display = 'none';
-    }
+  document.querySelectorAll('.swiper-slide img').forEach(img => {
+    img.addEventListener('load', () => {
+      img.classList.add('loaded');
+      // السبينر هو العنصر الشقيق للـ <a> اللي يحتوي الصورة،
+      // لذلك نطلع للوالد (swiper-slide) ونبحث عن السبينر داخله
+      const spinner = img.closest('.swiper-slide').querySelector('.spinner');
+      if (spinner) {
+        spinner.style.display = 'none';
+      }
+    });
   });
-});
 
 })();

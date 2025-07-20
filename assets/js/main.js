@@ -6,16 +6,16 @@
  * License: https://bootstrapmade.com/license/
  */
 
-(function() {
+(function () {
   "use strict";
 
   const translations = {};
   let currentLang = '';
 
- const isGithub = location.hostname.includes('github.io');
-const TRANSLATIONS_BASE_PATH = isGithub 
-  ? '/portfolio/translations/' 
-  : '../translations/';
+  const isGithub = location.hostname.includes('github.io');
+  const TRANSLATIONS_BASE_PATH = isGithub ?
+    '/portfolio/translations/' :
+    '../translations/';
 
 
   async function loadTranslations(lang) {
@@ -34,17 +34,17 @@ const TRANSLATIONS_BASE_PATH = isGithub
       }
     }
   }
-document.addEventListener("DOMContentLoaded", function () {
-  const dropdownToggle = document.querySelector(".navmenu .dropdown > a.toggle-dropdown");
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownToggle = document.querySelector(".navmenu .dropdown > a.toggle-dropdown");
 
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      const parent = this.parentElement;
-      parent.classList.toggle("open");
-    });
-  }
-});
+    if (dropdownToggle) {
+      dropdownToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        parent.classList.toggle("open");
+      });
+    }
+  });
 
   window.setLanguage = async (lang) => {
     localStorage.setItem('language', lang);
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
+    navmenu.addEventListener('click', function (e) {
       e.preventDefault();
       this.parentNode.classList.toggle('active');
       this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+    document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       if (swiperElement.swiper) {
         swiperElement.swiper.destroy(true, true);
       }
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  window.addEventListener('load', function(e) {
+  window.addEventListener('load', function (e) {
     if (window.location.hash) {
       if (document.querySelector(window.location.hash)) {
         setTimeout(() => {
@@ -258,8 +258,8 @@ document.addEventListener("DOMContentLoaded", function () {
     aosInit();
   });
 
-document.querySelectorAll('.view-details-btn').forEach(button => {
-    button.addEventListener('click', function(e) {
+  document.querySelectorAll('.view-details-btn').forEach(button => {
+    button.addEventListener('click', function (e) {
       e.preventDefault(); // تمنع الانتقال الفوري
 
       // ظهور الـ preloader
@@ -272,5 +272,5 @@ document.querySelectorAll('.view-details-btn').forEach(button => {
       }, 1000);
     });
   });
-  
+
 })();
