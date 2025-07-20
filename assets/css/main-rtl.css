@@ -221,7 +221,7 @@ html[dir="rtl"] .about .icon-box i {
     color: var(--accent-color);
 }
 
-
+/* وأيضاً، تأكد أن هذا الكود موجود لتحريك الأيقونة عند التمرير */
 html[dir="rtl"] .about .icon-box:hover i {
     background-color: var(--accent-color);
     color: var(--contrast-color);
@@ -317,15 +317,16 @@ html[dir="rtl"] .contact .info-item i {
     margin-left: 15px;
 }
 
-html[dir="rtl"] .contact .php-email-form input,
-html[dir="rtl"] .contact .php-email-form textarea {
-    text-align: right;
-}
 
-html[dir="rtl"] .contact .php-email-form input[type=text]::placeholder,
-html[dir="rtl"] .contact .php-email-form input[type=email]::placeholder,
-html[dir="rtl"] .contact .php-email-form textarea::placeholder {
-    text-align: right;
+
+
+html[dir="rtl"] .contact .info-item p {
+ 
+  direction: ltr;       
+  unicode-bidi: isolate; 
+  text-align: right;    
+                        
+                            
 }
 
 
