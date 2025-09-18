@@ -51,11 +51,11 @@
   "team_member2_quote": "Passionate software developer with hands-on experience in mobile app development using Flutter, and backend development using Laravel and Firebase. Skilled in analyzing requirements and transforming them into functional, user-friendly applications. Strong in teamwork, data management, and API integration. Always eager to learn and stay up-to-date with modern technologies.",
   "team_member3_name": "Moayyad Nagib",
   "team_member3_role": "Flutter Developer",
- "team_member3_quote": "Flutter Developer with extensive experience in building beautiful and high-performance mobile applications. My journey in technology has been fueled by a relentless curiosity and a commitment to continuous learning. I specialize in crafting seamless user experiences and leveraging the power of Flutter to create cross-platform solutions that meet client needs and exceed expectations. With a solid foundation in Dart and a keen eye for design, I enjoy transforming complex ideas into elegant, functional applications. I thrive in collaborative environments and believe in the power of teamwork to drive innovation. When I'm not coding, you can find me exploring the latest trends in technology or contributing to open-source projects.",
+  "team_member3_quote": "Flutter Developer with extensive experience in building beautiful and high-performance mobile applications. My journey in technology has been fueled by a relentless curiosity and a commitment to continuous learning. I specialize in crafting seamless user experiences and leveraging the power of Flutter to create cross-platform solutions that meet client needs and exceed expectations. With a solid foundation in Dart and a keen eye for design, I enjoy transforming complex ideas into elegant, functional applications. I thrive in collaborative environments and believe in the power of teamwork to drive innovation. When I'm not coding, you can find me exploring the latest trends in technology or contributing to open-source projects.",
 
   "team_member4_name": "Azzddine Miche",
   "team_member4_role": "UI/UX Designer",
-"team_member4_quote": "UI/UX designer by passion, interested in creating meaningful products that solve real user problems. I strive to bring genuine, impactful value to the world.\n\nI believe that design is the intersection of art, communication, and business—where everyone wins and people's lives truly improve.",
+  "team_member4_quote": "UI/UX designer by passion, interested in creating meaningful products that solve real user problems. I strive to bring genuine, impactful value to the world.\n\nI believe that design is the intersection of art, communication, and business—where everyone wins and people's lives truly improve.",
 
 
   "faq_title": "Frequently Asked Questions",
@@ -101,7 +101,7 @@
   "gallery_p": "Browse screenshots from our app to explore its interface and features.",
   "chatbox_section_heading": "ChatBox Application ",
   "chatbox_section_subtitle": "A quick overview of the app features, platform support, and development details.",
-  "Chatbox_app_desc":"ChatBox is a smart, modern messaging app designed to keep you connected with friends through seamless chat and photo sharing",
+  "Chatbox_app_desc": "ChatBox is a smart, modern messaging app designed to keep you connected with friends through seamless chat and photo sharing",
   "chatbox_app_description": "ChatBox is a smart, modern messaging app designed to keep you connected with friends through seamless chat and photo sharing—anytime, anywhere.",
   "chatbox_launch_date": "📅 Launch Date: August 2025",
   "chatbox_platforms": "💻 Platforms: Android, iOS",
@@ -178,8 +178,8 @@
   "wasselni_feature5": "Ratings and reviews system",
   "wasselni_feature6": "Multiple payment options (cash on delivery, digital)",
   "wasselni_feature7": "Multilingual support",
-     "dashboard_gallery_title": "Dashboard  ",
-    "dashboard_gallery_description": "A look at the application's dashboard interfaces.",
+  "dashboard_gallery_title": "Dashboard  ",
+  "dashboard_gallery_description": "A look at the application's dashboard interfaces.",
 
   "mado_section_heading": "Mado Application ",
   "mado_section_subtitle": "A quick overview of Mado's features, platform support, and development details.",
@@ -195,5 +195,23 @@
   "mado_feature3": "Practice Activities: Engaging activities to reinforce knowledge after videos.",
   "mado_feature4": "Community Interaction: Share activities and get feedback within the Mado community.",
   "mado_feature5": "Collaborative Learning: Foster discussion and engagement among users.",
-  "mado_final_note": "Mado combines structured education with social learning elements, making it an ideal platform for students seeking a more collaborative and engaging study experience."
+  "mado_final_note": "Mado combines structured education with social learning elements, making it an ideal platform for students seeking a more collaborative and engaging study experience.",
+
+  "masari_section_heading": "Masari University ",
+  "masari_section_subtitle": "A quick overview of Masari's features, platform support, and development details.",
+  "masari_app_desc": "Masari University is an interactive educational app that enables students to browse Iraqi university majors and admission rates, with advanced multi-filtering by departments, provinces, and colleges.",
+  "masari_app_description": "Masari University is an interactive educational app that enables students to browse Iraqi university majors and admission rates, with advanced multi-filtering by departments, provinces, and colleges. The app also provides a draft preparation feature for university application submission and is locally developed for investment.",
+  "masari_launch_date": "📅 Launch Date: September 2025",
+  "masari_platforms": "💻 Platforms: Android",
+  "masari_status": "🛠️ Status:Production Ready",
+  "masari_technologies": "🧰 Technologies:Flutter,Laravel",
+  "masari_features_heading": "Key Features:",
+  "masari_feature1": "Browse Iraqi university majors with ease.",
+  "masari_feature2": "View admission rates for each university and department.",
+  "masari_feature3": "Advanced filtering by department, province, college, and more.",
+  "masari_feature4": "Prepare a university application draft for submission.",
+  "masari_feature5": "Fast and user-friendly interface.",
+  "masari_final_note": "Masari University combines academic organization and smart tools for students, providing an effective and integrated application and tracking experience."
+
+
 }
